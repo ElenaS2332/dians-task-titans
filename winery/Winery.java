@@ -6,5 +6,6 @@ public class Winery {
         System.out.printf("Rosica");
         System.out.println("Napravete site po barem eden commit :))))");
         System.out.println("Olgica");
+        System.out.println("Dragica");
     }
 }
