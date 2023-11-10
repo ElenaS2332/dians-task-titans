@@ -3,3 +3,7 @@
 .idea/misc.xml
 .idea/modules.xml
 .idea/vcs.xml
+*.md
+out/production/dians-task-titans/winery/Winery.class
+out/production/dians-task-titans/Test.class
+out/production/dians-task-titans/.idea/.name

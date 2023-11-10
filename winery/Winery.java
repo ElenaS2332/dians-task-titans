@@ -1,11 +1,51 @@
 package winery;
+
+import java.util.ArrayList;
+
 public class Winery {
-    public static void main(String[] args) {
-        System.out.println("Winery");
-        System.out.println("Gjorgina");
-        System.out.printf("Rosica");
-        System.out.println("Napravete site po barem eden commit :))))");
-        System.out.println("Olgica");
-        System.out.println("Dragica");
+
+    public long ID;
+    public Double latitude;
+    public Double longitude;
+    public String coordinateType;
+
+    public String type;
+
+    public String name;
+    public Winery() {
+    }
+
+    public Winery(long id, String name, Double latitude, Double longitude) {
+        this.ID = id;
+        this.name = name;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public void setCoordinateType(String coordinateType) {
+        this.coordinateType = coordinateType;
+    }
+
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("\nID is:%d\nName is: %s\nLatitude is: %f\nLongitude is: %f\n",
+                ID, name, latitude, longitude);
     }
 }
