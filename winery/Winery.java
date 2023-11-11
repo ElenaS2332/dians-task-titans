@@ -45,7 +45,7 @@ public class Winery {
 
     @Override
     public String toString() {
-        return String.format("\nID is:%d\nName is: %s\nLatitude is: %f\nLongitude is: %f\n",
-                ID, name, latitude, longitude);
+        return String.format("\nName is: %s\nLatitude is: %f\nLongitude is: %f\n",
+                name, latitude, longitude);
     }
 }

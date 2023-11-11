@@ -14,9 +14,14 @@ public class Main {
         List<Winery> list = duplicatePipe.removeDuplicates(map);
 
         RemoveConfusionsPipe removeConfusionsPipe = new RemoveConfusionsPipe();
-        List<Winery> newList = removeConfusionsPipe.removeStreet(list);
-        List<Winery> newerNewList = removeConfusionsPipe.removeConfusingNames(newList);
-        System.out.println(newerNewList);
-        System.out.println(newerNewList.size());
+
+        List<Winery> modifiedList = removeConfusionsPipe.removeConfusingNames(
+                removeConfusionsPipe.removeStreet(list)
+        );
+        removeConfusionsPipe.changeById(modifiedList);
+        removeConfusionsPipe.translateById(modifiedList);
+
+        System.out.println(modifiedList);
+        System.out.println(modifiedList.size());
     }
 }

@@ -2,6 +2,6 @@ package winery;
 
 import java.util.List;
 
-public interface RemoveConfusingNames {
+public interface RemoveConfusingNamesFilter {
     List<Winery> removeConfusingNames(List<Winery> list);
 }

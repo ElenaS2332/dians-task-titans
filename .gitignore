@@ -20,3 +20,8 @@ out/production/dians-task-titans/winery/RemoveConfusingNames.class
 out/production/dians-task-titans/winery/RemoveConfusionsPipe.class
 out/production/dians-task-titans/winery/RemoveDuplicates.class
 out/production/dians-task-titans/winery/RemoveStreet.class
+out/production/dians-task-titans/winery/ChangeByIdFilter.class
+out/production/dians-task-titans/winery/RemoveConfusingNamesFilter.class
+out/production/dians-task-titans/winery/RemoveStreetFilter.class
+out/production/dians-task-titans/winery/RemoveDuplicatesFilter.class
+out/production/dians-task-titans/winery/TranslateByIdFilter.class
