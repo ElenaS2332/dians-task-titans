@@ -25,3 +25,15 @@ out/production/dians-task-titans/winery/RemoveConfusingNamesFilter.class
 out/production/dians-task-titans/winery/RemoveStreetFilter.class
 out/production/dians-task-titans/winery/RemoveDuplicatesFilter.class
 out/production/dians-task-titans/winery/TranslateByIdFilter.class
+out/production/dians-task-titans/firstHomework/domasna1.txt
+out/production/dians-task-titans/firstHomework/winery/ChangeByIdFilter.class
+out/production/dians-task-titans/firstHomework/winery/DuplicatePipe.class
+out/production/dians-task-titans/firstHomework/winery/OSMParser$1.class
+out/production/dians-task-titans/firstHomework/winery/Main.class
+out/production/dians-task-titans/firstHomework/winery/OSMParser.class
+out/production/dians-task-titans/firstHomework/winery/RemoveConfusingNamesFilter.class
+out/production/dians-task-titans/firstHomework/winery/RemoveConfusionsPipe.class
+out/production/dians-task-titans/firstHomework/winery/Winery.class
+out/production/dians-task-titans/firstHomework/winery/RemoveStreetFilter.class
+out/production/dians-task-titans/firstHomework/winery/RemoveDuplicatesFilter.class
+out/production/dians-task-titans/firstHomework/winery/TranslateByIdFilter.class

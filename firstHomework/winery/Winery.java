@@ -5,9 +5,6 @@ public class Winery {
     public long ID;
     public Double latitude;
     public Double longitude;
-    public String coordinateType;
-
-    public String type;
 
     public String name;
     public Winery() {
@@ -18,10 +15,6 @@ public class Winery {
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
-    }
-
-    public void setCoordinateType(String coordinateType) {
-        this.coordinateType = coordinateType;
     }
 
 
@@ -37,8 +30,20 @@ public class Winery {
         this.name = name;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public long getID() {
+        return ID;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
@@ -46,4 +51,5 @@ public class Winery {
         return String.format("\nName is: %s\nLatitude is: %f\nLongitude is: %f\n",
                 name, latitude, longitude);
     }
+
 }
