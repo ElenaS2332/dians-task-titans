@@ -6,7 +6,6 @@ import java.util.Map;
 import java.io.FileWriter;
 import java.io.IOException;
 
-
 public class Main {
     public static void main(String[] args) {
         String filePath = "data.osm";
@@ -25,7 +24,7 @@ public class Main {
         removeConfusionsPipe.changeById(modifiedList);
         removeConfusionsPipe.translateById(modifiedList);
 
-        writeListToJsonFile(modifiedList, "wineries.json");
+        writeListToJsonFile(modifiedList, "firstHomework/winery/wineries.json");
     }
 
     private static void writeListToJsonFile(List<Winery> modifiedList, String fileName) {
