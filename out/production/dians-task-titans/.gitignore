@@ -7,7 +7,6 @@
 out/production/dians-task-titans/winery/Winery.class
 out/production/dians-task-titans/Test.class
 out/production/dians-task-titans/.idea/.name
-<<<<<<< HEAD
 .idea/uiDesigner.xml
 out/production/dians-task-titans/data.geojson
 out/production/dians-task-titans/data.osm
@@ -21,6 +20,8 @@ out/production/dians-task-titans/winery/RemoveConfusingNames.class
 out/production/dians-task-titans/winery/RemoveConfusionsPipe.class
 out/production/dians-task-titans/winery/RemoveDuplicates.class
 out/production/dians-task-titans/winery/RemoveStreet.class
-=======
-.idea/.name
->>>>>>> 2d075ac21daa48fe92605fec91382797c6628141
+out/production/dians-task-titans/winery/ChangeByIdFilter.class
+out/production/dians-task-titans/winery/RemoveConfusingNamesFilter.class
+out/production/dians-task-titans/winery/RemoveStreetFilter.class
+out/production/dians-task-titans/winery/RemoveDuplicatesFilter.class
+out/production/dians-task-titans/winery/TranslateByIdFilter.class

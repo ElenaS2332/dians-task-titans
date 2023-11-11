@@ -1,6 +1,4 @@
-package winery;
-
-import java.util.ArrayList;
+package firstHomework.winery;
 
 public class Winery {
 
