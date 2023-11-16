@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        String filePath = "data.osm";
+        String filePath = "";
         OSMParser parser = new OSMParser(filePath);
         parser.parseOSM();
         Map<String, Winery> map = OSMParser.getMap();
@@ -24,6 +24,7 @@ public class Main {
         removeConfusionsPipe.changeById(modifiedList);
         removeConfusionsPipe.translateById(modifiedList);
 
+//        System.out.println(modifiedList);
         writeListToJsonFile(modifiedList, "firstHomework/winery/wineries.json");
     }
 
