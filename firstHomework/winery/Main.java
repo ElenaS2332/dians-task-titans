@@ -1,15 +1,59 @@
 package firstHomework.winery;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 public class Main {
     public static void main(String[] args) {
-        String filePath = "";
-        OSMParser parser = new OSMParser(filePath);
+        String zipFilePath = "dians-task-titans/data.zip";
+
+        try (ZipInputStream zipInputStream = new CustomZipInputStream(new FileInputStream(zipFilePath))) {
+            ZipEntry entry;
+            while ((entry = zipInputStream.getNextEntry()) != null) {
+                String entryName = entry.getName();
+
+                // Process each entry (file) in the zip file
+                if (!entry.isDirectory()) {
+                    processZipEntry(zipInputStream, entryName);
+                }
+                // Check if the stream is closed
+                if (((CustomZipInputStream) zipInputStream).isClosed()) {
+                    System.exit(0);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private static class CustomZipInputStream extends ZipInputStream {
+        private boolean closed = false;
+
+        public CustomZipInputStream(InputStream in) {
+            super(in);
+        }
+
+        @Override
+        public void close() throws IOException {
+            super.close();
+            closed = true;
+        }
+
+        public boolean isClosed() {
+            return closed;
+        }
+    }
+    private static void processZipEntry(ZipInputStream zipInputStream, String entryName) {
+        // Your existing code to parse and process Winery data goes here
+        OSMParser parser = new OSMParser(zipInputStream);
         parser.parseOSM();
         Map<String, Winery> map = OSMParser.getMap();
 
@@ -23,9 +67,9 @@ public class Main {
         );
         removeConfusionsPipe.changeById(modifiedList);
         removeConfusionsPipe.translateById(modifiedList);
-
-//        System.out.println(modifiedList);
-        writeListToJsonFile(modifiedList, "firstHomework/winery/wineries.json");
+        
+        // Write the modifiedList to a JSON file
+        writeListToJsonFile(modifiedList, "dians-task-titans/firstHomework/winery/wineries.json");
     }
 
     private static void writeListToJsonFile(List<Winery> modifiedList, String fileName) {
