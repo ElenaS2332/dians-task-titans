@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    \
+    <link rel="stylesheet" href="style.css"/>
+    <title>Reservation</title>
+</head>
+<body>
+<nav>
+    <div>
+        <!--        <img-->
+        <!--                src="https://i.pinimg.com/originals/40/78/98/4078985bc6a79bfd627c5973d49acf6b.png"-->
+        <!--                alt="Wine Logo"-->
+        <!--                class="logo"-->
+        <!--        />-->
+    </div>
+    <ul>
+        <li><button class="btn btn-outline-success" type="submit">HOME</button></li>
+        <li><button class="btn btn-outline-success" type="submit">WINE</button></li>
+        <li><button class="btn btn-outline-success" type="submit">WINERIES</button></li>
+    </ul>
+</nav>
+<section class="reservation-section">
+    <div class="reservation">
+        <p class="res-title">Reservation</p>
+        <p class="res-title">Winery Name</p>
+        <p class="res-desc">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta animi nihil natus maxime
+            sapiente dignissimos assumenda fugit, impedit illum ullam!
+        </p>
+    </div>
+    <form class="form">
+        <label>Name</label>
+        <input type="text"/>
+        <label>Surname</label>
+        <input type="text"/>
+        <label>Email</label>
+        <input type="email"/>
+        <label>Phone</label>
+        <input type="text"/>
+        <label>Pick a date</label>
+        <input type="date"/>
+        <button class="btn" type="submit">Reserve</button>
+    </form>
+</section>
+</body>
+<style>
+    nav {
+        background-color: gray;
+        padding: 1rem 5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #fff;
+        height: 6rem;
+    }
+
+    .logo {
+        height: 80px;
+        width: 80px;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+    }
+
+    nav ul li {
+        margin-right: 20px;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .reservation-section {
+        padding: 3rem;
+        background-color: slateblue;
+        display: flex;
+        gap: 2rem;
+    }
+
+    .reservation {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: steelblue;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        flex: 1;
+        padding: 2rem;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        padding: 2rem;
+    }
+
+    .res-title:first-child {
+        color: white;
+        font-size: 3rem;
+    }
+
+    .res-title {
+        color: white;
+        font-size: 2rem;
+    }
+
+    .res-desc {
+        color: white;
+        font-size: 1.2rem;
+        font-style: italic;
+        max-width: 500px;
+    }
+
+    .form input {
+        margin: 0.5rem 0;
+        width: 70%;
+        padding: 0.6rem;
+        border: none;
+        border-radius: 20px;
+    }
+
+    .form label {
+        color: white;
+        margin-left: 1rem;
+    }
+
+    .btn {
+        width: 70%;
+        margin-top: 1rem;
+        padding: 0.6rem;
+        border-radius: 20px;
+        border: none;
+        background-color: green;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+</style>
+</html>

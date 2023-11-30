@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <section class="jumbotron text-center" xmlns:th="http://www.thymeleaf.org">
+        <div class="container">
+<!--            <h1 class="jumbotron-heading">Home</h1>-->
+        </div>
+    </section>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<nav>
+
+    <div>
+<!--        <img-->
+<!--                src="https://i.pinimg.com/originals/40/78/98/4078985bc6a79bfd627c5973d49acf6b.png"-->
+<!--                alt="Wine Logo"-->
+<!--                class="logo"-->
+<!--        />-->
+    </div>
+    <ul>
+        <li><button class="btn btn-outline-success" type="submit">HOME</button></li>
+        <li><button class="btn btn-outline-success" type="submit">WINE</button></li>
+        <li><button class="btn btn-outline-success" type="submit">WINERIES</button></li>
+    </ul>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="winery-card">
+<!--        <img-->
+<!--                src="https://b1540865.smushcdn.com/1540865/wp-content/uploads/2020/12/iStock-1049837208_res.jpg?lossy=0&strip=0&webp=1"-->
+<!--                alt="wineries"-->
+<!--                class="wine"-->
+<!--        />-->
+
+        <h2>Burnt Hills Winery</h2>
+        <p>
+            Short description of the winery. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+    </div>
+    <div class="winery-card">
+<!--        <img-->
+<!--                src="https://iconic-life.com/wp-content/uploads/2020/02/macedonian-wine.jpg"-->
+<!--                alt="wineries"-->
+<!--                class="wine"-->
+<!--        />-->
+
+        <h2>Countryside Winery</h2>
+        <p>
+            Short description of the winery. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+    </div>
+    <div class="winery-card">
+<!--        <img-->
+<!--                src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_700,q_75,w_1366/v1/clients/virginia/NV15100502V_013_6f6b5450-09b0-4897-a0be-15ff84ef6eff.jpg"-->
+<!--                alt="wineries"-->
+<!--                class="wine"-->
+<!--        />-->
+
+        <h2>Golden Grape Winery</h2>
+        <p>
+            Short description of the winery. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+    </div>
+    <div class="winery-card">
+<!--        <img-->
+<!--                src="https://www.tourismcowichan.com/app/uploads/2021/02/Screen-Shot-2021-02-26-at-8.23.29-PM.png"-->
+<!--                alt="wineries"-->
+<!--                class="wine"-->
+<!--        />-->
+
+        <h2>Harvest Moon Winery</h2>
+        <p>
+            Short description of the winery. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2023 Winery Page. All rights reserved.</p>
+    <span>Contact: +123 000212</span>
+    <span>Email: test@gmail.com</span>
+</footer>
+</body>
+<style>
+    html,
+    body,
+    :root {
+        width: 100%;
+        height: 100%;
+    }
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body {
+        font-family: 'Arial', sans-serif;
+        overflow-x: hidden;
+    }
+
+    nav {
+        background-color: gray;
+        padding: 1rem 5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #fff;
+        height: 6rem;
+    }
+    .logo {
+        height: 80px;
+        width: 80px;
+    }
+    nav ul {
+        list-style: none;
+        display: flex;
+    }
+
+    nav ul li {
+        margin-right: 20px;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .hero {
+        background-color: #f7f1eb;
+        padding: 3rem;
+        gap: 1rem;
+        text-align: center;
+        display: flex;
+    }
+
+    .winery-card {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 8px;
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .wine {
+        height: 200px;
+        width: 200px;
+    }
+    .winery-card p {
+        max-width: 300px;
+    }
+</style>
+</html>

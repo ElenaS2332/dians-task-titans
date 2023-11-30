@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Wines</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<nav>
+    <div>
+        <img
+                src="https://i.pinimg.com/originals/40/78/98/4078985bc6a79bfd627c5973d49acf6b.png"
+                alt="Wine Logo"
+                class="logo"
+        />
+    </div>
+    <ul>
+        <li><button class="btn btn-outline-success" type="submit">HOME</button></li>
+        <li><button class="btn btn-outline-success" type="submit">WINE</button></li>
+        <li><button class="btn btn-outline-success" type="submit">WINERIES</button></li>
+    </ul>
+</nav>
+<section class="wine-section">
+    <div class="wine-card">
+<!--        <img-->
+<!--                src="https://vanderpumpwines.com/cdn/shop/products/Chardonnay940.jpg?v=1632851685"-->
+<!--                alt="wine"-->
+<!--                class="glass"-->
+<!--        />-->
+        <div class="text-wrapper">
+            <h3 class="title">Cabernet Sauvignon</h3>
+            <p class="description">
+                Cabernet Sauvignon is one of the world's most widely recognized red wine grape
+                varieties. It is grown in nearly every major wine producing country among a diverse
+                spectrum of climates from Australia and British Columbia, Canada to Lebanon's Beqaa
+                Valley.
+            </p>
+        </div>
+    </div>
+    <div class="wine-card-two">
+<!--        <img-->
+<!--                src="https://gusbourne.s3.amazonaws.com/uploads/image/file/1120/square_sm_Pinot_Noir_Rose_2020.jpg"-->
+<!--                alt="wine"-->
+<!--                class="glass"-->
+<!--        />-->
+        <div class="text-wrapper">
+            <h3 class="title">Pinot Noir RosÃ©</h3>
+            <p class="description">
+                Pinot Noir RosÃ© 2020 Produced from 100% Pinot Noir grapes, this dry RosÃ© redeemed its
+                brilliant pink colour from the short skin contact. Full exotic cherry and raspberry
+                aromas, with a lingering creaminess on the palate.
+            </p>
+        </div>
+    </div>
+</section>
+</body>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body {
+        font-family: 'Arial', sans-serif;
+        overflow-x: hidden;
+    }
+    nav {
+        background-color: gray;
+        padding: 1rem 5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #fff;
+        height: 6rem;
+    }
+
+    .logo {
+        height: 80px;
+        width: 80px;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+    }
+
+    nav ul li {
+        margin-right: 20px;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #fff;
+    }
+    .wine-section {
+        background-color: #f7f1eb;
+        padding: 3rem;
+        width: 100%;
+    }
+
+    .wine-card {
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        padding: 3rem;
+        display: flex;
+        gap: 2rem;
+    }
+    .wine-card-two {
+        margin-top: 1rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        border-radius: 20px;
+        padding: 3rem;
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 2rem;
+    }
+    .text-wrapper {
+        flex: 1;
+        margin-top: 2rem;
+    }
+    .title {
+        font-size: 3rem;
+        color: black;
+    }
+    .description {
+        margin-top: 1rem;
+        font-style: italic;
+        font-size: 1.2rem;
+        max-width: 500px;
+        color: #333;
+    }
+    .glass {
+        flex: 1;
+        width: 200px;
+        height: 350px;
+        border-radius: 10px;
+    }
+</style>
+</html>
