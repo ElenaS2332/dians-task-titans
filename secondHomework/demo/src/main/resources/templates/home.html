@@ -26,9 +26,9 @@
         />
     </div>
     <ul>
-        <li><button class="btn" type="submit">HOME</button></li>
-        <li><button class="btn" type="submit">WINE</button></li>
-        <li><button class="btn" type="submit">WINERIES</button></li>
+        <li><a href="http://localhost:8080/home"><button class="kopce1" type="submit">HOME</button></a></li>
+        <li><a href="http://localhost:8080/wine"><button class="kopce2" type="submit">WINE</button></a></li>
+        <li><a href="http://localhost:8080/wineries"><button class="kopce3" type="submit">WINERIES</button></a></li>
     </ul>
 </nav>
 
@@ -97,11 +97,11 @@
         width: 100%;
         height: 100%;
     }
-    * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-    }
+    /** {*/
+    /*    padding: 0;*/
+    /*    margin: 0;*/
+    /*    box-sizing: border-box;*/
+    /*}*/
     body {
         font-family: 'Arial', sans-serif;
         overflow-x: hidden;
@@ -113,8 +113,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        color: #fff;
-        height: 6rem;
+        height: 9rem;
     }
     .logo {
         height: 80px;
@@ -123,10 +122,13 @@
     nav ul {
         list-style: none;
         display: flex;
+        margin-right: 900px;
+        margin-top: 120px;
+        margin-left: -200px;
     }
 
     nav ul li {
-        margin-right: 20px;
+        margin-left: 20px;
     }
 
     nav a {
@@ -159,5 +161,24 @@
     .winery-card p {
         max-width: 300px;
     }
+    ul, li, button
+    {
+        font-family: Cambria;
+    }
+    li, button
+    {
+        border-radius: 20px;
+        border: none;
+        width: 100px;
+        height: 30px;
+        background-color: transparent;
+    }
+    button:focus
+    {
+        background: lightgray;
+        color: darkslategrey;
+        font-weight: bold;
+    }
+
 </style>
 </html>
