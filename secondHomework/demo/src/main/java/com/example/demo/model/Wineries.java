@@ -1,17 +1,40 @@
 package com.example.demo.model;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Wineries {
-    String name;
-    String region;
-    String address;
-    List<Wine> wineList;
+    @JsonProperty("id")
+    public long ID;
 
-    public Wineries(String name, String region, String address, List<Wine> wineList) {
+    public Double latitude;
+    public Double longitude;
+
+    public String name;
+
+    public String location;
+
+    @JsonProperty("img")
+    public String image;
+
+    // Default constructor
+    public Wineries() {
+    }
+
+    public Wineries(@JsonProperty("id") long ID,
+                    @JsonProperty("latitude") Double latitude,
+                    @JsonProperty("longitude") Double longitude,
+                    @JsonProperty("name") String name,
+                    @JsonProperty("img") String image,
+                    @JsonProperty("location") String location) {
+        this.ID = ID;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.name = name;
-        this.region = region;
-        this.address = address;
-        this.wineList = wineList;
+        this.image = image;
+        this.location = location;
+    }
+
+    public String getLocation() {
+        return location;
     }
 }

@@ -26,10 +26,30 @@
         <li><a href="http://localhost:8080/wineries"><button class="kopce3" type="submit">WINERIES</button></a></li>
     </ul>
 </nav>
-<h1>Wineries coming</h1>
-<ul>
-    <li><button class="btn btn-outline-success" type="submit">Reserve</button></li>
-</ul>
+<hr/>
+<section class="hero">
+    <div class="container">
+        <div class="row">
+            <div th:each="winery : ${wineries}" class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${winery.name}">Winery Name</h5>
+                        <!-- You can include other winery details here -->
+                        <p class="card-text">Latitude: <span th:text="${winery.latitude}">Latitude</span></p>
+                        <p class="card-text">Longitude: <span th:text="${winery.longitude}">Longitude</span></p>
+                        <!-- Add more details as needed -->
+                        <img th:src="${winery.image}" alt="Winery Image">
+
+                        <!-- You can also include buttons or links if needed -->
+                        <!-- <a href="#" class="btn btn-primary">Details</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 </body>
 </html>
 
