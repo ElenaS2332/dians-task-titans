@@ -27,27 +27,58 @@
     </ul>
 </nav>
 <hr/>
-<section class="hero">
-    <div class="container">
-        <div class="row">
-            <div th:each="winery : ${wineries}" class="col-md-4 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="${winery.name}">Winery Name</h5>
-                        <!-- You can include other winery details here -->
-                        <p class="card-text">Latitude: <span th:text="${winery.latitude}">Latitude</span></p>
-                        <p class="card-text">Longitude: <span th:text="${winery.longitude}">Longitude</span></p>
-                        <!-- Add more details as needed -->
-                        <img th:src="${winery.image}" alt="Winery Image">
 
-                        <!-- You can also include buttons or links if needed -->
-                        <!-- <a href="#" class="btn btn-primary">Details</a> -->
+<section class="all-cards" th:with="isFilterApplied=${selectedLocation != null and selectedLocation != ''}">
+    <form class="mt-3 mb-3" style="margin: 150px" action="/wineries/filter" method="get">
+        <div class="form-row align-items-stretch">
+                <label class="mr-sm-2" for="location">Filter by Location:</label>
+                <select class="custom-select mr-sm-2" id="location" name="location">
+                    <option value="" th:text="'All Wineries'" th:selected="${selectedLocation == null or selectedLocation == ''}"></option>
+                    <option th:each="locationOption : ${locationOptions}" th:value="${locationOption}" th:text="${locationOption}" th:selected="${selectedLocation == locationOption}"></option>
+                </select>
+                <button type="submit" class="btn btn-secondary">Filter</button>
+        </div>
+    </form>
+    <!-- Display all wineries -->
+    <section th:if="${!isFilterApplied}"  class="hero">
+        <div class="container">
+            <div class="row">
+                <div th:each="winery : ${wineries}" class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${winery.name}">Winery Name</h5>
+                            <!-- You can include other winery details here -->
+                            <p class="card-text">Location: <span th:text="${winery.location}">Location</span></p>
+                            <!-- Add more details as needed -->
+                            <img th:src="${winery.image}" alt="Winery Image">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Display filtered wineries -->
+    <section th:if="${isFilterApplied}" class="hero">
+        <div class="container">
+            <div class="row">
+                <div th:each="winery : ${filteredWineries}" class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${winery.name}">Winery Name</h5>
+                            <!-- You can include other winery details here -->
+                            <p class="card-text">Location: <span th:text="${winery.location}">Location</span></p>
+                            <!-- Add more details as needed -->
+                            <img th:src="${winery.image}" alt="Winery Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </section>
+
 
 
 </body>
@@ -161,5 +192,20 @@
         color: darkslategrey;
         font-weight: bold;
     }
+
+    .reset-filter {
+        margin-left: 10px;
+        text-decoration: none;
+        color: #333;
+        border: 1px solid #333;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .reset-filter:hover {
+        background-color: #333;
+        color: #fff;
+    }
+
 </style>
 
