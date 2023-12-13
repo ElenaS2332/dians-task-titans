@@ -5,49 +5,38 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "diansusers")
+@Table(name = "dians-users")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
+    @Column(nullable = false, unique = true)
     private String username;
-
+    @Column(nullable = false)
     private String password;
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String surname;
 
     @Convert(converter = UserFullnameConverter.class)
     private UserFullname fullname;
 
-//    @OneToMany(fetch = FetchType.EAGER)
-    // private List<ShoppingCart> carts;
+//    @Embedded
+//    @AttributeOverrides({
+//            @AttributeOverride(name = "address1", column = @Column(name = "user_address1")),
+//            @AttributeOverride(name = "address2", column = @Column(name = "user_address2"))
+//    })
+//    private UserAddress userAddress;
+    public User() {}
 
-    @Embedded
-    @AttributeOverrides({
-            @AttributeOverride(name = "address1", column = @Column(name = "user_address1")),
-            @AttributeOverride(name = "address2", column = @Column(name = "user_address2"))
-    })
-    private UserAddress userAddress;
-
-    // Empty constructor for JPA
-    public User() {
-    }
-
-    // Constructor for basic information
-    public User(String username, String password, String name, String surname) {
+    public User(Long id, String username, String password, String name, String surname) {
+        this.Id = id;
         this.username = username;
         this.password = password;
         this.name = name;
         this.surname = surname;
     }
-
-    // Constructor for additional information
-    public User(String username, String password, String name, String surname, UserAddress userAddress) {
-        this.username = username;
-        this.password = password;
-        this.fullname = new UserFullname(name, surname);
-        this.userAddress = userAddress;
-    }
-
-    // Getters and setters...
 }
 
 

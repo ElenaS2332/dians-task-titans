@@ -8,6 +8,7 @@ import com.example.demo.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AuthService implements AuthServiceе {
@@ -42,17 +43,30 @@ public class AuthService implements AuthServiceе {
             throw new PasswordsDoNotMatchException();
         }
 
-        User user = new User(username, password, name, surname);
-        // Assuming User class has a constructor that takes username, password, name, and surname.
+        long id = (long) userRepository.findAll().size() + 1;
+
+        User user = new User(id, username, password, name, surname);
 
         User savedUser = userRepository.save(user);
 
-        return (com.example.demo.model.User) savedUser;
+        return savedUser;
     }
-
     @Override
     public List<User> findAll() {
         return userRepository.findAll();
     }
+
+    @Override
+    public User getUserByUsername(String username) {
+        Optional<User> optionalUser = userRepository.findByUsername(username);
+
+        if (optionalUser.isEmpty()) {
+            throw new InvalidUserExcepion(); // or handle as appropriate for your application
+        }
+
+        User user = optionalUser.get();
+        return new User(user.getId(), user.getUsername(), user.getPassword(), user.getName(), user.getSurname());
+    }
+
 }
 
