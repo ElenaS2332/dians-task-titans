@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -25,6 +25,10 @@
         <li><button class="btn" type="submit">WINE</button></li>
         <li><button class="btn" type="submit">WINERIES</button></li>
     </ul>
+    <!--za Hello ime-->
+    <div th:if="${username}">
+        <p th:text="'Hello ' + ${username}"></p>
+    </div>
 </nav>
 <section class="reservation-section">
     <div class="reservation">

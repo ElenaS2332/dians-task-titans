@@ -1,8 +1,10 @@
 package com.example.demo.web.controller;
 
+import com.example.demo.model.User;
 import com.example.demo.model.Wineries;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,8 +23,13 @@ public class WineriesController {
     private List<Wineries> wineries;
 
     @GetMapping
-    public String getWineries(Model model) {
+    public String getWineries(HttpServletRequest request, Model model) {
         ObjectMapper objectMapper = new ObjectMapper();
+        User user = (User) request.getSession().getAttribute("user");
+        if (user != null) {
+            // Pass the username to the template
+            model.addAttribute("username", user.getUsername());
+        }
 
         try (InputStream inputStream = getClass().getResourceAsStream("/wineries.json")) {
             wineries = objectMapper.readValue(inputStream, new TypeReference<List<Wineries>>() {});
@@ -35,6 +42,7 @@ public class WineriesController {
             // Handle the exception appropriately
         }
 
+        model.addAttribute("bodyContent", "home");
         return "wineries";
     }
 

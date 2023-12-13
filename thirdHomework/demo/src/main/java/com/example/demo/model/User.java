@@ -7,7 +7,6 @@ import lombok.Data;
 @Entity
 @Table(name = "diansusers")
 public class User {
-
     @Id
     private String username;
 

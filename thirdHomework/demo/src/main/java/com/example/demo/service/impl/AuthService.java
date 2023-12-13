@@ -46,6 +46,7 @@ public class AuthService implements AuthServiceе {
         // Assuming User class has a constructor that takes username, password, name, and surname.
 
         User savedUser = userRepository.save(user);
+
         return (com.example.demo.model.User) savedUser;
     }
 
