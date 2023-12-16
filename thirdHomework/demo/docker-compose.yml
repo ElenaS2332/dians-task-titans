@@ -1,0 +1,16 @@
+version: "3"
+services:
+  Wp-db:
+    image: "postgres"
+#  Give the container the name my_postgres.
+#  You can changes to something el
+    container_name: "dians_users"
+#  Setup the username,password, and database name. You can changes these v
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=dians
+      - POSTGRES_DB=dians-users
+    ports:
+      - "5432:5432"
+    volumes:
+      - "./postgres-data:/var/lib/postgresql/data"
