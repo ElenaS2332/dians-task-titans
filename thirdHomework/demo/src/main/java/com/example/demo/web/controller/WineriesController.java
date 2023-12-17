@@ -1,6 +1,7 @@
 package com.example.demo.web.controller;
 
 import com.example.demo.model.User;
+import com.example.demo.model.Wine;
 import com.example.demo.model.Wineries;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -8,6 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -73,6 +75,13 @@ public class WineriesController {
         return wineries.stream()
                 .filter(winery -> location.equalsIgnoreCase(winery.getLocation()))
                 .collect(Collectors.toList());
+    }
+    @PostMapping("/submitRating")
+    public String submitRating(@RequestParam String comment, Model model) {
+
+        model.addAttribute("message", "Rating submitted successfully!");
+
+        return "redirect:/home"; // Redirect to the home page or any other page after submission
     }
 
 }

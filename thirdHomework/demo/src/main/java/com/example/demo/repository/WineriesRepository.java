@@ -1,7 +1,8 @@
 package com.example.demo.repository;
 
-import org.springframework.stereotype.Repository;
+import com.example.demo.model.Wineries;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public class WineriesRepository {
+public interface WineriesRepository extends JpaRepository<Wineries,Long> {
+
 }
