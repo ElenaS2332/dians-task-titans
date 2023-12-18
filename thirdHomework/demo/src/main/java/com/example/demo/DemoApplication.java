@@ -26,7 +26,7 @@ public class DemoApplication {
         return args -> {
             try {
                 JsonReader jsonReader = new JsonReader();
-                List<Wineries> wineries = jsonReader.readWineryData("C:\\Users\\olgic\\Documents\\GitHub\\dians-task-titans\\thirdHomework\\demo\\src\\main\\resources\\wineries.json");
+                List<Wineries> wineries = jsonReader.readWineryData("dians-task-titans\\thirdHomework\\demo\\src\\main\\resources\\wineries.json");
 
                 wineriesService.saveWineriesData(wineries);
             } catch (IOException e) {
