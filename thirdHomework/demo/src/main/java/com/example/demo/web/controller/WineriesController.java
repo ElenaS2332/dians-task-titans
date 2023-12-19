@@ -1,11 +1,17 @@
 package com.example.demo.web.controller;
 
+import com.example.demo.model.Review;
 import com.example.demo.model.User;
 import com.example.demo.model.Wine;
 import com.example.demo.model.Wineries;
+import com.example.demo.repository.WineriesRepository;
+import com.example.demo.service.ReviewService;
+import com.example.demo.service.WineriesService;
+import com.example.demo.service.impl.WineriesServiceImpl;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +21,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Controller
@@ -23,6 +31,12 @@ import java.util.stream.Collectors;
 public class WineriesController {
 
     private List<Wineries> wineries;
+
+    private final WineriesService wineriesService;
+
+    public WineriesController(WineriesService wineriesService) {
+        this.wineriesService = wineriesService;
+    }
 
     @GetMapping
     public String getWineries(HttpServletRequest request, Model model) {
@@ -76,12 +90,6 @@ public class WineriesController {
                 .filter(winery -> location.equalsIgnoreCase(winery.getLocation()))
                 .collect(Collectors.toList());
     }
-    @PostMapping("/submitRating")
-    public String submitRating(@RequestParam String comment, Model model) {
 
-        model.addAttribute("message", "Rating submitted successfully!");
-
-        return "redirect:/home"; // Redirect to the home page or any other page after submission
-    }
 
 }
