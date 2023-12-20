@@ -1,9 +1,7 @@
 package com.example.demo.model;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.util.List;
 
 @Data
@@ -22,6 +20,7 @@ public class Wineries {
 
     public String location;
     public String rating;
+    public String description;
 
     @OneToMany(mappedBy = "winery", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews;
@@ -38,7 +37,8 @@ public class Wineries {
                     @JsonProperty("name") String name,
                     @JsonProperty("img") String image,
                     @JsonProperty("location") String location,
-                    @JsonProperty("rating") String rating){
+                    @JsonProperty("rating") String rating,
+                    @JsonProperty("description")String description){
         this.id = id;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -46,6 +46,7 @@ public class Wineries {
         this.image = image;
         this.location = location;
         this.rating=rating;
+        this.description=description;
     }
 
     public String getName() {
