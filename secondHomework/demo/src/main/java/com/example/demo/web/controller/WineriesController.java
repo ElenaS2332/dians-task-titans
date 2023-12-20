@@ -28,8 +28,14 @@ public class WineriesController {
             wineries = objectMapper.readValue(inputStream, new TypeReference<List<Wineries>>() {});
             model.addAttribute("wineries", wineries);
 
-            // Print the list of wineries for verification
-            wineries.forEach(System.out::println);
+            List<String> locationOptions = wineries.stream()
+                    .map(Wineries::getLocation)
+                    .distinct()
+                    .collect(Collectors.toList());
+
+            model.addAttribute("locationOptions", locationOptions);
+            // Set selectedLocation to an empty string for the initial state
+            model.addAttribute("selectedLocation", "");
         } catch (IOException e) {
             e.printStackTrace();
             // Handle the exception appropriately
@@ -38,14 +44,24 @@ public class WineriesController {
         return "wineries";
     }
 
-    @GetMapping("/wineries")
+
+    @GetMapping("/filter")
     public String getFilteredWineries(@RequestParam(required = false) String location, Model model) {
         // Perform filtering based on latitude and longitude
         List<Wineries> filteredWineries = filterWineriesByLocation(location);
 
         // Print filtered wineries for verification
         System.out.println("Filtered Wineries:");
-        filteredWineries.forEach(System.out::println);
+
+        List<String> locationOptions = wineries.stream()
+                .map(Wineries::getLocation)
+                .distinct()
+                .collect(Collectors.toList());
+
+        model.addAttribute("locationOptions", locationOptions);
+        // Set the selectedLocation attribute based on the request parameter
+        model.addAttribute("selectedLocation", location);
+        model.addAttribute("wineries", wineries);
 
         // Add the filtered wineries to the model
         model.addAttribute("filteredWineries", filteredWineries);
