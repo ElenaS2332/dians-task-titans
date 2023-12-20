@@ -35,13 +35,6 @@
 </nav>
 <hr/>
 
-
-
-
-
-
-
-
 <section class="hero">
     <div class="grid-container">
         <div th:each="winery : ${wineries}" class="card">
@@ -54,7 +47,7 @@
                 <p class="card-text">Rating: <span th:text="${winery.rating}">Rating</span></p>
                 <p class="card-text">Description: <span th:text="${winery.description}">Description</span></p>
                 <!-- Add more details as needed -->
-                <img th:src="${winery.image}" alt="Winery Image">
+<!--                <img th:src="${winery.image}">-->
                 <hr/>
 
 
