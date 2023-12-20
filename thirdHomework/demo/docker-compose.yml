@@ -7,9 +7,9 @@ services:
     container_name: "dians_users"
 #  Setup the username,password, and database name. You can changes these v
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=dians
-      - POSTGRES_DB=dians-users
+      - POSTGRES_USER=diansuser
+      - POSTGRES_PASSWORD=zwuf4fvqUCNCynpOjV0AGLAgmb6IGu23
+      - POSTGRES_DB=diansdb_npr6
     ports:
       - "5432:5432"
     volumes:
