@@ -44,11 +44,12 @@ public class RegisterController {
             model.addAttribute("hasError", true);
             model.addAttribute("error", exception.getMessage());
             System.out.println("Caught exception in RegisterController. Session is: " + request.getSession());
-            return "register";
+//            return "register";
+            throw exception;
         }
 
         request.getSession().setAttribute("user", user);
-        return "redirect:/login";
+        return "login";
     }
 }
 
