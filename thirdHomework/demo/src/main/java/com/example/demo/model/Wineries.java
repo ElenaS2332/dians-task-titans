@@ -27,7 +27,6 @@ public class Wineries {
     @JsonProperty("img")
     public String image;
 
-    // Default constructor
     public Wineries() {
     }
 

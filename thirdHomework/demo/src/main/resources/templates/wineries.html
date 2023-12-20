@@ -36,25 +36,37 @@
 <hr/>
 <section class="hero">
     <div class="container">
+        <form class="my-4 mx-auto" style="max-width: 400px;" action="/wineries/filter" method="get">
+            <div class="input-group">
+                <select class="custom-select col" id="location" name="location">
+                    <option value="" th:text="'All Wineries'" th:selected="${selectedLocation == null or selectedLocation == ''}"></option>
+                    <option th:each="locationOption : ${locationOptions}" th:value="${locationOption}" th:text="${locationOption}" th:selected="${selectedLocation == locationOption}"></option>
+                </select>
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-secondary">Filter</button>
+                </div>
+            </div>
+        </form>
+
+
+
+    </div>
+<!--    Display all wineries-->
+    <div class="container" th:if="${!isFilterApplied}">
         <div class="row">
             <div th:each="winery : ${wineries}" class="col-md-4 mb-4">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title" th:text="${winery.name}">Winery Name</h5>
-
-                        <!-- You can include other winery details here -->
                         <p class="card-text">Latitude: <span th:text="${winery.latitude}">Latitude</span></p>
                         <p class="card-text">Longitude: <span th:text="${winery.longitude}">Longitude</span></p>
                         <p class="card-text">Location: <span th:text="${winery.location}">Location</span></p>
                         <p class="card-text">Rating: <span th:text="${winery.rating}">Rating</span></p>
                         <p class="card-text">Description: <span th:text="${winery.description}">Description</span></p>
-                        <!-- Add more details as needed -->
-<!--                        Trying merge-->
-                        <img th:src="${winery.image}" alt="Winery Image">
+<!--                        <img th:src="${winery.image}" alt="Winery Image">-->
                         <hr/>
                         <form th:action="'/review'" method="GET">
                             <input type="hidden" name="id" th:value="${winery.getId()}" />
-<!--                            <input id="id" type="hidden" name="id" th:value="(${wineryToReview} != null ? ${winery.getId()} : '')">-->
                             <div class="form-group">
                                 <label for="score">Winery score: </label>
                                 <input type="text" class="form-control" id="score" name="score" placeholder="Enter winery score">
@@ -65,12 +77,46 @@
                             </div>
                             <button id="submit" style="background-color: lightgreen; margin: 5px; padding: 5px;width: 60px; height: 35px"  type="submit">Submit</button>
                         </form>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!--    Display filtered wineries-->
+    <div class="container" th:if="${isFilterApplied}">
+        <div class="row">
+            <div th:each="winery : ${filteredWineries}" class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${winery.name}">Winery Name</h5>
+                        <p class="card-text">Latitude: <span th:text="${winery.latitude}">Latitude</span></p>
+                        <p class="card-text">Longitude: <span th:text="${winery.longitude}">Longitude</span></p>
+                        <p class="card-text">Location: <span th:text="${winery.location}">Location</span></p>
+                        <p class="card-text">Rating: <span th:text="${winery.rating}">Rating</span></p>
+                        <p class="card-text">Description: <span th:text="${winery.description}">Description</span></p>
+                        <!--                        <img th:src="${winery.image}" alt="Winery Image">-->
+                        <hr/>
+                        <form th:action="'/review'" method="GET">
+                            <input type="hidden" name="id" th:value="${winery.getId()}" />
+                            <div class="form-group">
+                                <label for="score">Winery score: </label>
+                                <input type="text" class="form-control" id="filterScore" name="score" placeholder="Enter winery score">
+                            </div>
+                            <div class="form-group">
+                                <label for="comment">Comment:</label>
+                                <input type="text" class="form-control" id="filterComment" name="comment" placeholder="Enter review comment">
+                            </div>
+                            <button id="filterSubmit" style="background-color: lightgreen; margin: 5px; padding: 5px;width: 60px; height: 35px"  type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 </section>
 
 </body>
