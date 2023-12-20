@@ -23,6 +23,7 @@ com\example\demo\service\impl\ReservationServiceImpl.class
 com\example\demo\web\servlet\HomeServlet.class
 com\example\demo\model\Wine.class
 com\example\demo\bootstrap\DataHolder.class
+com\example\demo\config\DataSourceConfig.class
 com\example\demo\repository\HomeRepository.class
 com\example\demo\web\controller\WineriesController.class
 com\example\demo\repository\UserRepository.class
