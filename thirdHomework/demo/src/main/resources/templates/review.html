@@ -12,12 +12,44 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-
-<h1 style="font-style: italic; color: maroon">Thanks for your review!</h1>
+<div class="review-container">
+<h1 class="title" style="font-style: italic; color: maroon">Thanks for your review!</h1>
 <hr/>
-<p>Score: <span th:text="${score}"></span></p>
-<p>Comment: <span th:text="${comment}"></span></p>
-
+<p class="score">Score: <span th:text="${score}"></span></p>
+<p class="comment">Comment: <span th:text="${comment}"></span></p>
+<button class="back">
+    <a href="/wineries">Back</a>
+</button>
+</div>
 
 </body>
+<style>
+    .review-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    .title {
+        color: red;
+        font-size: 2rem;
+    }
+    .score {
+        font-size: 1rem;
+    }
+    .comment {
+        font-size: 1rem;
+    }
+    .back {
+        padding: .5rem 2rem;
+        border-radius: 10px;
+        border: none;
+    }
+    a {
+        text-decoration: none;
+        color: darkred;
+    }
+</style>
 </html>
