@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="style.css"/>
+    <title>Reservation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<nav>
+    <div>
+                <img
+                        src="https://i.pinimg.com/originals/40/78/98/4078985bc6a79bfd627c5973d49acf6b.png"
+                        alt="Wine Logo"
+                        class="logo"
+                />
+    </div>
+    <ul>
+        <li><button class="btn" type="submit">HOME</button></li>
+        <li><button class="btn" type="submit">WINE</button></li>
+        <li><button class="btn" type="submit">WINERIES</button></li>
+    </ul>
+    <!--za Hello ime-->
+    <div th:if="${username}">
+        <p th:text="'Hello ' + ${username}"></p>
+    </div>
+    <div class="col-md-6">
+        <a href="/logout" class="btn btn-lg btn-block btn-dark">Logout</a>
+    </div>
+</nav>
+<section class="reservation-section">
+    <div class="reservation">
+        <p class="res-title">Reservation</p>
+        <p class="res-title">Winery Name</p>
+        <p class="res-desc">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta animi nihil natus maxime
+            sapiente dignissimos assumenda fugit, impedit illum ullam!
+        </p>
+    </div>
+    <form class="form">
+        <label>Name</label>
+        <input type="text"/>
+        <label>Surname</label>
+        <input type="text"/>
+        <label>Email</label>
+        <input type="email"/>
+        <label>Phone</label>
+        <input type="text"/>
+        <label>Pick a date</label>
+        <input type="date"/>
+        <button class="else" type="submit">Reserve</button>
+    </form>
+</section>
+</body>
+<style>
+    nav {
+        background-color: darkgrey;
+        padding: 1rem 5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #fff;
+        height: 6rem;
+    }
+
+    .logo {
+        height: 80px;
+        width: 80px;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+    }
+
+    nav ul li {
+        margin-right: 20px;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .reservation-section {
+        padding: 3rem;
+        background-color: slategrey;
+        display: flex;
+        gap: 2rem;
+    }
+
+    .reservation {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: darkred;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        flex: 1;
+        padding: 2rem;
+        border-radius: 20px;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        padding: 2rem;
+    }
+
+    .res-title:first-child {
+        color: white;
+        font-size: 3rem;
+    }
+
+    .res-title {
+        color: white;
+        font-size: 2rem;
+    }
+
+    .res-desc {
+        color: white;
+        font-size: 1.2rem;
+        font-style: italic;
+        max-width: 500px;
+    }
+
+    .form input {
+        margin: 0.5rem 0;
+        width: 70%;
+        padding: 0.6rem;
+        border: none;
+        border-radius: 20px;
+    }
+
+    .form label {
+        color: white;
+        margin-left: 1rem;
+    }
+
+    .else {
+        width: 70%;
+        margin-top: 1rem;
+        padding: 0.6rem;
+        border-radius: 20px;
+        border: none;
+        background-color: darkred;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+</style>
+</html>
