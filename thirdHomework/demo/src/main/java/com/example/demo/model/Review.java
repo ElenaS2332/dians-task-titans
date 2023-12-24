@@ -20,7 +20,8 @@ public class Review {
     private String comment;
 
     @ManyToOne
-    @JoinColumn(name = "winery_id")
+    @JoinColumn(name = "winery_id", nullable = false)
+    @PrimaryKeyJoinColumn
     private Wineries winery;
 
     public Review(Long id, String comment,int score) {

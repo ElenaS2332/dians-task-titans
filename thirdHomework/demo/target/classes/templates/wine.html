@@ -24,11 +24,13 @@
         <li><a href="http://localhost:8080/wineries"><button class="kopce3" type="submit">WINERIES</button></a></li>
     </ul>
     <!--za Hello ime-->
-    <div th:if="${username}">
-        <p th:text="'Hello ' + ${username}"></p>
-    </div>
-    <div class="col-md-6">
-        <a href="/logout" class="btn btn-lg btn-block btn-dark">Logout</a>
+    <div class="user-wrapper">
+        <div th:if="${username}" class="username">
+            <p class="name" th:text="'Hello ' + ${username}"></p>
+        </div>
+        <div class="col-md-6">
+            <a href="/logout" class="btn btn-lg btn-block btn-dark">Logout</a>
+        </div>
     </div>
 </nav>
 <section class="wine-section">
@@ -81,24 +83,30 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: 9rem;
+        height: 6rem;
     }
 
     .logo {
-        height: 80px;
-        width: 80px;
+        height: 65px;
+        width: 65px;
     }
-
-    nav ul {
+    .user-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .username {
+        display: flex;
+    }
+    .name {
+        font-style: italic;
+        font-size: 18px;
+        margin-left: 5px;
+    }
+    ul {
         list-style: none;
         display: flex;
-        margin-right: 900px;
-        margin-top: 120px;
-        margin-left: -200px;
-    }
-
-    nav ul li {
-        margin-left: 20px;
+        align-items: center;
     }
 
     nav a {
