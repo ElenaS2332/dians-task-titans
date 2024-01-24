@@ -14,6 +14,38 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             crossorigin="anonymous"></script>
+
+
+
+<!--    slika css-->
+    <style>
+        .hero {
+            position: relative;
+            background: url('https://cdn.discordapp.com/attachments/1179135427039461460/1199293903522779227/d4.png?ex=65c2047c&is=65af8f7c&hm=f0e201123961dd73c0902510115acdd01a16096b79f4bea4f49260358d979528&') center/cover no-repeat;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /*.hero-content {*/
+        /*    text-align: center;*/
+        /*    color: white; !* Optional: Set text color for better visibility *!*/
+        /*}*/
+
+        /* Optional: Add styles for the image */
+        .hero img {
+            width: 767px;
+            height: 396px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+
+
+
+
 </head>
 <body>
 <nav>
@@ -25,6 +57,9 @@
                 class="logo"
         />
     </div>
+
+
+<!--    meni-->
     <ul>
         <li><a href="http://localhost:8080/home"><button class="kopce1" type="submit">HOME</button></a></li>
         <li><a href="http://localhost:8080/wine"><button class="kopce2" type="submit">WINE</button></a></li>
@@ -44,54 +79,67 @@
 
 <!-- Hero Section -->
 <section class="hero">
-    <div class="winery-card">
-        <img
-                src="https://b1540865.smushcdn.com/1540865/wp-content/uploads/2020/12/iStock-1049837208_res.jpg?lossy=0&strip=0&webp=1"
-                alt="wineries"
-                class="wine"
-        />
+<!--    <div>-->
+<!--        <img-->
+<!--                            src="https://cdn.discordapp.com/attachments/1179135427039461460/1199293903522779227/d4.png?ex=65c2047c&is=65af8f7c&hm=f0e201123961dd73c0902510115acdd01a16096b79f4bea4f49260358d979528&"-->
+<!--                            alt="background"-->
+<!--                            width="767px"-->
+<!--                            height="396px"-->
+<!--                    />-->
 
-        <h2>Burnt Hills Winery</h2>
-        <p>
-            Short description of the winery. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </p>
-    </div>
-    <div class="winery-card">
-        <img
-                src="https://iconic-life.com/wp-content/uploads/2020/02/macedonian-wine.jpg"
-                alt="wineries"
-                class="wine"
-        />
 
-        <h2>Countryside Winery</h2>
-        <p>
-            Short description of the winery. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </p>
-    </div>
-    <div class="winery-card">
-        <img
-                src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_700,q_75,w_1366/v1/clients/virginia/NV15100502V_013_6f6b5450-09b0-4897-a0be-15ff84ef6eff.jpg"
-                alt="wineries"
-                class="wine"
-        />
 
-        <h2>Golden Grape Winery</h2>
-        <p>
-            Short description of the winery. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </p>
-    </div>
-    <div class="winery-card">
-        <img
-                src="https://www.tourismcowichan.com/app/uploads/2021/02/Screen-Shot-2021-02-26-at-8.23.29-PM.png"
-                alt="wineries"
-                class="wine"
-        />
 
-        <h2>Harvest Moon Winery</h2>
-        <p>
-            Short description of the winery. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </p>
-    </div>
+
+<!--    </div>-->
+<!--    <div class="winery-card">-->
+<!--        <img-->
+<!--                src="https://b1540865.smushcdn.com/1540865/wp-content/uploads/2020/12/iStock-1049837208_res.jpg?lossy=0&strip=0&webp=1"-->
+<!--                alt="wineries"-->
+<!--                class="wine"-->
+<!--        />-->
+
+<!--        <h2>Burnt Hills Winery</h2>-->
+<!--        <p>-->
+<!--            Short description of the winery. Lorem ipsum dolor sit amet, consectetur adipiscing elit.-->
+<!--        </p>-->
+<!--    </div>-->
+<!--    <div class="winery-card">-->
+<!--        <img-->
+<!--                src="https://iconic-life.com/wp-content/uploads/2020/02/macedonian-wine.jpg"-->
+<!--                alt="wineries"-->
+<!--                class="wine"-->
+<!--        />-->
+
+<!--        <h2>Countryside Winery</h2>-->
+<!--        <p>-->
+<!--            Short description of the winery. Lorem ipsum dolor sit amet, consectetur adipiscing elit.-->
+<!--        </p>-->
+<!--    </div>-->
+<!--    <div class="winery-card">-->
+<!--        <img-->
+<!--                src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_700,q_75,w_1366/v1/clients/virginia/NV15100502V_013_6f6b5450-09b0-4897-a0be-15ff84ef6eff.jpg"-->
+<!--                alt="wineries"-->
+<!--                class="wine"-->
+<!--        />-->
+
+<!--        <h2>Golden Grape Winery</h2>-->
+<!--        <p>-->
+<!--            Short description of the winery. Lorem ipsum dolor sit amet, consectetur adipiscing elit.-->
+<!--        </p>-->
+<!--    </div>-->
+<!--    <div class="winery-card">-->
+<!--        <img-->
+<!--                src="https://www.tourismcowichan.com/app/uploads/2021/02/Screen-Shot-2021-02-26-at-8.23.29-PM.png"-->
+<!--                alt="wineries"-->
+<!--                class="wine"-->
+<!--        />-->
+
+<!--        <h2>Harvest Moon Winery</h2>-->
+<!--        <p>-->
+<!--            Short description of the winery. Lorem ipsum dolor sit amet, consectetur adipiscing elit.-->
+<!--        </p>-->
+<!--    </div>-->
 </section>
 
 <footer>
