@@ -41,7 +41,6 @@ public class ReviewController {
         model.addAttribute("comment", comment);
 
         return "review";
-
     }
 
     @PostMapping("/review")

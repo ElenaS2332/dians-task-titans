@@ -1,5 +1,6 @@
 package com.example.demo.web.controller;
 
+import com.example.demo.logger.WineryLogger;
 import com.example.demo.model.InvalidArgumentsException;
 import com.example.demo.model.InvalidUserExcepion;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LoginController {
 
     private final AuthService authService;
+    private final WineryLogger wineryLogger = WineryLogger.getInstance();
 
     public LoginController(AuthService authService) {
         this.authService = authService;
@@ -37,7 +39,7 @@ public class LoginController {
             model.addAttribute("bodyContent", "login");
             model.addAttribute("hasError", true);
             model.addAttribute("error", exception.getMessage());
-            System.out.println("Caught exception in LoginController. Session is: " + request.getSession());
+            wineryLogger.logLoginError(request.getParameter("username"), exception.getMessage());
             return "login";
         }
 

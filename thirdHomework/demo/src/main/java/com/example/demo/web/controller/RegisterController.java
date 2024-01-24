@@ -1,5 +1,6 @@
 package com.example.demo.web.controller;
 
+import com.example.demo.logger.WineryLogger;
 import com.example.demo.model.InvalidArgumentsException;
 import com.example.demo.model.InvalidUserExcepion;
 import com.example.demo.model.PasswordsDoNotMatchException;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/register")
 public class RegisterController {
     private final AuthService authService;
+    private final WineryLogger wineryLogger = WineryLogger.getInstance();
 
     public RegisterController(AuthService authService) {
         this.authService = authService;
@@ -43,7 +45,7 @@ public class RegisterController {
             model.addAttribute("bodyContent", "login");
             model.addAttribute("hasError", true);
             model.addAttribute("error", exception.getMessage());
-            System.out.println("Caught exception in RegisterController. Session is: " + request.getSession());
+            wineryLogger.logRegistrationError(request.getParameter("username"), exception.getMessage());
             return "register";
         }
 
