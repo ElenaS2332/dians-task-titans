@@ -33,6 +33,7 @@ public class WineriesController {
     private List<Wineries> wineries;
 
     private final WineriesService wineriesService;
+    private static final int MAX_DESCRIPTION_LENGTH = 20;
 
     public WineriesController(WineriesService wineriesService) {
         this.wineriesService = wineriesService;
@@ -48,6 +49,7 @@ public class WineriesController {
 
         try (InputStream inputStream = getClass().getResourceAsStream("/wineries.json")) {
             wineries = objectMapper.readValue(inputStream, new TypeReference<List<Wineries>>() {});
+            truncateDescription(wineries);
             model.addAttribute("wineries", wineries);
 
             List<String> locationOptions = wineries.stream()
@@ -60,6 +62,7 @@ public class WineriesController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        model.addAttribute("truncatedDescription", true);
         model.addAttribute("isFilterApplied", false);
 
         model.addAttribute("bodyContent", "home");
@@ -81,7 +84,7 @@ public class WineriesController {
         model.addAttribute("selectedLocation", location);
         model.addAttribute("wineries", wineries);
 
-        // Initialize the filteredWineries attribute with the filtered list
+        truncateDescription(filteredWineries);
         model.addAttribute("filteredWineries", filteredWineries);
         model.addAttribute("isFilterApplied", true);
 
@@ -99,4 +102,21 @@ public class WineriesController {
                 .collect(Collectors.toList());
     }
 
+
+    private void truncateDescription(List<Wineries> wineries) {
+        for (Wineries winery : wineries) {
+            String truncatedDescription = truncateString(winery.getDescription(), MAX_DESCRIPTION_LENGTH);
+            winery.setTruncatedDescription(truncatedDescription);
+        }
+    }
+
+    private String truncateString(String input, int maxLength) {
+        if (input.length() <= maxLength) {
+            return input;
+        } else {
+            return input.substring(0, maxLength) + "...";
+        }
+    }
+
+    public void toggleDesc(){}
 }

@@ -1,4 +1,5 @@
 package com.example.demo.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -26,6 +27,11 @@ public class Wineries {
     private List<Review> reviews;
     @JsonProperty("img")
     public String image;
+
+    @Transient
+    @JsonIgnore
+    private String truncatedDescription;
+
 
     public Wineries() {
     }

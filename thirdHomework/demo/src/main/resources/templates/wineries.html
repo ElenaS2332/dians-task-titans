@@ -10,10 +10,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             crossorigin="anonymous"></script>
+    <script th:src="@{/js/custom.js}"></script>
 </head>
 <body>
 <nav>
-<!--     logo     -->
+    <!--     logo     -->
     <div>
         <img
                 src="https://i.pinimg.com/originals/40/78/98/4078985bc6a79bfd627c5973d49acf6b.png"
@@ -21,7 +22,7 @@
                 class="logo"
         />
     </div>
-<!--     list items    -->
+    <!--     list items    -->
     <ul>
         <li><a href="http://localhost:8080/home"><button class="kopce1" type="submit">HOME</button></a></li>
         <li><a href="http://localhost:8080/wine"><button class="kopce2" type="submit">WINE</button></a></li>
@@ -29,12 +30,12 @@
     </ul>
     <!--za Hello ime-->
     <div class="user-wrapper">
-    <div th:if="${username}" class="username">
-        <p class="name" th:text="'Hello ' + ${username}"></p>
-    </div>
-    <div class="col-md-6">
-        <a href="/logout" class="btn btn-lg btn-block btn-dark">Logout</a>
-    </div>
+        <div th:if="${username}" class="username">
+            <p class="name" th:text="'Hello ' + ${username}"></p>
+        </div>
+        <div class="col-md-6">
+            <a href="/logout" class="btn btn-lg btn-block btn-dark">Logout</a>
+        </div>
     </div>
 </nav>
 <hr/>
@@ -53,7 +54,7 @@
             </div>
         </form>
     </div>
-<!--    Display all wineries-->
+    <!--    Display all wineries-->
     <div class="container" th:if="${!isFilterApplied}">
         <div class="row">
             <div th:each="winery : ${wineries}" class="col-md-4 mb-4">
@@ -64,8 +65,39 @@
                         <p class="card-text">Longitude: <span th:text="${winery.longitude}">Longitude</span></p>
                         <p class="card-text">Location: <span th:text="${winery.location}">Location</span></p>
                         <p class="card-text">Rating: <span th:text="${winery.rating}">Rating</span></p>
-                        <p class="card-text">Description: <span th:text="${winery.description}">Description</span></p>
-<!--                        <img th:src="${winery.image}" alt="Winery Image">-->
+                        <p class="card-text">
+                            Description:
+                            <span class="description-text" th:if="${truncatedDescription}" th:text="${winery.truncatedDescription}"></span>
+                            <span class="description-text" th:if="${!truncatedDescription}" th:text="${winery.description}"></span>
+
+                            <button class="see-more-btn" th:attr="data-truncated-description=${truncatedDescription}" onclick="toggleDesc(this)">See more</button>
+                        </p>
+
+                        <script th:inline="javascript">
+                            /*<![CDATA[*/
+                            function toggleDesc(btn) {
+                                var cardBody = btn.closest('.card-body');
+                                var descriptionText = cardBody.querySelector('.description-text');
+                                var truncatedDescription = btn.getAttribute('data-truncated-description');
+
+                                if (truncatedDescription === 'true') {
+                                    // If truncated, make it not truncated
+                                    descriptionText.textContent = /*[[${winery.description}]]*/ '';
+                                } else {
+                                    // If not truncated, make it truncated
+                                    descriptionText.textContent = /*[[${winery.truncatedDescription}]]*/ '';
+                                }
+
+                                // Toggle the value of truncatedDescription
+                                btn.setAttribute('data-truncated-description', truncatedDescription === 'true' ? 'false' : 'true');
+                            }
+                            /*]]>*/
+                        </script>
+
+
+
+
+
                         <hr/>
                         <form th:action="'/review'" method="GET">
                             <input type="hidden" name="id" th:value="${winery.getId()}" />
@@ -96,8 +128,7 @@
                         <p class="card-text">Longitude: <span th:text="${winery.longitude}">Longitude</span></p>
                         <p class="card-text">Location: <span th:text="${winery.location}">Location</span></p>
                         <p class="card-text">Rating: <span th:text="${winery.rating}">Rating</span></p>
-                        <p class="card-text">Description: <span th:text="${winery.description}">Description</span></p>
-                        <!--                        <img th:src="${winery.image}" alt="Winery Image">-->
+                        <!--                        <p class="card-text">Description: <span th:text="${winery.description}">Description</span></p>-->
                         <hr/>
                         <form th:action="'/review'" method="GET">
                             <input type="hidden" name="id" th:value="${winery.getId()}" />
@@ -206,19 +237,19 @@
         align-items: center;
         height: 6rem;
     }
-.user-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-.username {
-    display: flex;
-}
-.name {
-    font-style: italic;
-    font-size: 18px;
-    margin-left: 5px;
-}
+    .user-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .username {
+        display: flex;
+    }
+    .name {
+        font-style: italic;
+        font-size: 18px;
+        margin-left: 5px;
+    }
     .logo {
         height: 65px;
         width: 65px;
@@ -234,51 +265,6 @@
         text-decoration: none;
         color: #fff;
     }
-    /*.wine-section {*/
-    /*    background-color: #f7f1eb;*/
-    /*    padding: 3rem;*/
-    /*    width: 100%;*/
-    /*}*/
-
-    /*.wine-card {*/
-    /*    background-color: #fff;*/
-    /*    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
-    /*    border-radius: 20px;*/
-    /*    padding: 3rem;*/
-    /*    display: flex;*/
-    /*    gap: 2rem;*/
-    /*}*/
-    /*!*.wine-card-two {*!*/
-    /*    margin-top: 1rem;*/
-    /*    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
-    /*    background-color: #fff;*/
-    /*    border-radius: 20px;*/
-    /*    padding: 3rem;*/
-    /*    display: flex;*/
-    /*    flex-direction: row-reverse;*/
-    /*    gap: 2rem;*/
-    /*}*/
-    /*.text-wrapper {*/
-    /*    flex: 1;*/
-    /*    margin-top: 2rem;*/
-    /*}*/
-    /*.title {*/
-    /*    font-size: 3rem;*/
-    /*    color: black;*/
-    /*}*/
-    /*.description {*/
-    /*    margin-top: 1rem;*/
-    /*    font-style: italic;*/
-    /*    font-size: 1.2rem;*/
-    /*    max-width: 500px;*/
-    /*    color: #333;*/
-    /*}*/
-    /*.glass {*/
-    /*    flex: 1;*/
-    /*    width: 200px;*/
-    /*    height: 350px;*/
-    /*    border-radius: 10px;*/
-    /*}*/
     ul, li, button
     {
         font-family: Cambria;
@@ -299,3 +285,4 @@
     }
 
 </style>
+
