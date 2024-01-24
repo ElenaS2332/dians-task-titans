@@ -22,6 +22,8 @@ public class Wineries {
     public String rating;
     public String description;
 
+    public String phone;
+
     @OneToMany(mappedBy = "winery", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews;
     @JsonProperty("img")
@@ -37,7 +39,8 @@ public class Wineries {
                     @JsonProperty("img") String image,
                     @JsonProperty("location") String location,
                     @JsonProperty("rating") String rating,
-                    @JsonProperty("description")String description){
+                    @JsonProperty("description")String description,
+                    @JsonProperty("phone")String phone){
         this.id = id;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -46,6 +49,7 @@ public class Wineries {
         this.location = location;
         this.rating=rating;
         this.description=description;
+        this.phone = phone;
     }
 
     public String getName() {
