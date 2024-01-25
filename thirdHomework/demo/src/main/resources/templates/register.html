@@ -7,8 +7,10 @@
     <title>Registration Page</title>
     <style>
       body {
-        background-color: #600000; /* Deep red wine color */
-        color: #ffffff; /* White text */
+          background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20231229/pngtree-top-view-of-wine-bottle-image_13868279.png');
+          background-size: cover;
+          background-repeat: no-repeat;
+          color: #ffffff; /* White text */
      }
 
      .container {
@@ -18,7 +20,7 @@
       }
 
      .form-signup {
-       background-color: #800000; /* Darker red wine color */
+       background-color: #6C2F42; /* Darker red wine color */
        padding: 15px;
        border-radius: 5px;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -38,8 +40,8 @@
       }
 
      .btn-primary {
-       background-color: #8b0000; /* Dark red wine color for button */
-        border-color: #8b0000; /* Dark red wine color for button border */
+       background-color: #6C2F42; /* Dark red wine color for button */
+        border-color: #ffffff; /* Dark red wine color for button border */
       }
 
       .btn-light {
@@ -75,7 +77,7 @@
             <input type="text" id="surname" name="surname" class="form-control" placeholder="surname" required="">
         </div>
         <th:block th:if="${errorMessage}">
-            <div th:text="${errorMessage}" class="text-danger"></div>
+            <div th:text="${errorMessage}" th:color="white"></div>
         </th:block>
     <div class="row">
       <div class="col-md-12">
