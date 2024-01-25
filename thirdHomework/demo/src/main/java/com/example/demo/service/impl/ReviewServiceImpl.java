@@ -31,12 +31,17 @@ public class ReviewServiceImpl implements ReviewService {
         return reviews;
     }
 
+//    @Override
+//    public Review save(Long id,float score, String comment) {
+//        Wineries winery=wineriesRepository.findById(id).orElseThrow(InvalidArgumentsException::new);
+//        Review review= new Review(score,comment,winery);
+//        Review savedReview=reviewRepository.save(review);
+//        return savedReview;
+//    }
+
     @Override
-    public Review save(Long id,float score, String comment) {
-        Wineries winery=wineriesRepository.findById(id).orElseThrow(InvalidArgumentsException::new);
-        Review review= new Review(score,comment,winery);
-        Review savedReview=reviewRepository.save(review);
-        return savedReview;
+    public Review save(Review review) {
+        return reviewRepository.save(review);
     }
 
 }

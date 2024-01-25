@@ -54,7 +54,9 @@ public class ReviewController {
     public String submitReview(@PathVariable Long id,
                                      @RequestParam float score,
                                      @RequestParam String comment) {
-        reviewService.save(id,score,comment);
+        Review review = new Review(score, comment);
+        wineriesService.setWineryRating(review, id);
+        reviewService.save(review);
         return "review";
     }
 }

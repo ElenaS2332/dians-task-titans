@@ -13,8 +13,8 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
+
 <nav>
-<!--     logo     -->
     <div>
         <img
                 src="https://i.pinimg.com/originals/40/78/98/4078985bc6a79bfd627c5973d49acf6b.png"
@@ -22,13 +22,11 @@
                 class="logo"
         />
     </div>
-<!--     list items    -->
     <ul>
         <li><a href="/home"><button class="kopce1" type="submit">HOME</button></a></li>
         <li><a href="/wine"><button class="kopce2" type="submit">WINE</button></a></li>
         <li><a href="/wineries"><button class="kopce3" type="submit">WINERIES</button></a></li>
     </ul>
-    <!--za Hello ime-->
     <div class="user-wrapper">
     <div th:if="${username}" class="username">
         <p class="name" th:text="'Hello ' + ${username}"></p>
@@ -65,12 +63,12 @@
                         <p class="card-text">Longitude: <span th:text="${winery.longitude}">Longitude</span></p>
                         <p class="card-text">Location: <span th:text="${winery.location}">Location</span></p>
                         <p class="card-text">Phone: <span th:text="${winery.phone}">Phone</span></p>
-                        <p class="card-text">Rating: <span th:text="${winery.rating}">Rating</span></p>
+                        <p class="card-text">Rating: <span th:text="${winery.getRating()}">Rating</span></p>
                         <p class="card-text">Description: <span th:text="${winery.description}">Description</span></p>
                         <hr/>
 
                         <form th:action="@{'/saveReview/{id}' (id=${winery.id})}" th:method="POST">
-                        <input type="hidden" name="id" th:value="${winery.getId()}">
+                            <input type="hidden" name="id" th:value="${winery.getId()}">
                             <div class="form-group">
                                 <label for="score">Winery score: </label>
                                 <input type="number" class="form-control" id="score" name="score"  placeholder="Enter winery score" required th:step="${0.01}" th:min="${0.00}" th:max="${5.00}">
@@ -98,7 +96,7 @@
                         <p class="card-text">Longitude: <span th:text="${winery.longitude}">Longitude</span></p>
                         <p class="card-text">Location: <span th:text="${winery.location}">Location</span></p>
                         <p class="card-text">Phone: <span th:text="${winery.phone}">Phone</span></p>
-                        <p class="card-text">Rating: <span th:text="${winery.rating}">Rating</span></p>
+                        <p class="card-text">Rating: <span th:text="${winery.getRating()}">Rating</span></p>
                         <p class="card-text">Description: <span th:text="${winery.description}">Description</span></p>
                         <hr/>
                         <form th:action="@{'/saveReview/{id}' (id=${winery.id})}" th:method="POST">

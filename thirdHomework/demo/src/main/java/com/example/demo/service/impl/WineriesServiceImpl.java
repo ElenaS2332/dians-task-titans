@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.model.InvalidArgumentsException;
+import com.example.demo.model.Review;
 import com.example.demo.model.Wineries;
 import com.example.demo.repository.WineriesRepository;
 import com.example.demo.service.WineriesService;
@@ -29,6 +30,14 @@ public class WineriesServiceImpl implements WineriesService {
     @Transactional
     public void saveWineriesData(List<Wineries> wineries) {
         wineriesRepository.saveAll(wineries);
+    }
+
+    @Override
+    public void setWineryRating(Review review, Long wineryId){
+        Wineries winery = wineriesRepository.findById(wineryId)
+                .orElseThrow(InvalidArgumentsException::new);
+        winery.addReview(review);
+        wineriesRepository.save(winery);
     }
 
 }

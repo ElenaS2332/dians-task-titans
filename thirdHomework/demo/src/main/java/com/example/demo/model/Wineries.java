@@ -2,6 +2,8 @@ package com.example.demo.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -48,6 +50,7 @@ public class Wineries {
         this.rating=rating;
         this.description=description;
         this.phone = phone;
+        this.reviews = new ArrayList<>();
     }
 
     public String getName() {
@@ -55,13 +58,23 @@ public class Wineries {
     }
 
     public String getRating() {
-        return rating;
+        double averageRating = reviews.stream()
+                .mapToDouble(Review::getScore)
+                .average()
+                .orElse(0.0);
+
+        return String.format("%.2f", averageRating);
     }
+
 
     public long getId() {
         return id;
     }
 
+    public void addReview(Review review)
+    {
+        this.reviews.add(review);
+    }
 
     public String getLocation() {
         return location;
