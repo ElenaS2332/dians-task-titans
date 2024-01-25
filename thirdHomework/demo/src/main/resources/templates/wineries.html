@@ -101,7 +101,7 @@
                         <p class="card-text">Rating: <span th:text="${winery.rating}">Rating</span></p>
                         <p class="card-text">Description: <span th:text="${winery.description}">Description</span></p>
                         <hr/>
-                        <form th:action="@{'/saveReview/{id}'}" th:method="POST">
+                        <form th:action="@{'/saveReview/{id}' (id=${winery.id})}" th:method="POST">
                             <input type="hidden" name="id" th:value="${winery.getId()}" />
                             <div class="form-group">
                                 <label for="score">Winery score: </label>
