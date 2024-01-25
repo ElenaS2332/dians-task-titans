@@ -1,0 +1,318 @@
+*****************************************************************************************
+
+For WineryLoggerClass:
+
+• Method: getInstance()
+    Description:
+        Retrieves the singleton instance of WineryLogger.
+    Parameters: None.
+    Returns:
+        The WineryLogger instance.
+
+• Method: logRegistrationError(String username, String error)
+    Description:
+        Logs a registration error for a user.
+    Parameters:
+        username (String): The username of the user facing registration error.
+        error (String): The detailed error message for the registration failure.
+    Returns: void.
+
+• Method: logLoginError(String username, String error)
+    Description:
+        Logs a login error for a user.
+    Parameters:
+        username (String): The username of the user facing login error.
+        error (String): The detailed error message for the login failure.
+    Returns: void.
+
+• Method: logCommentError(String username, Long wineryId, String error)
+    Description:
+        Logs an error encountered while leaving a comment on a winery.
+    Parameters:
+        username (String): The username of the user attempting to leave a comment.
+        wineryId (Long): The ID of the winery on which the comment was intended.
+        error (String): The detailed error message for the comment-related failure.
+    Returns: void.
+
+
+***************************************************************************************
+
+
+For AuthServiceClass:
+
+• Method: credentialsInvalid(String username, String password)
+    Description:
+        Checks if the provided credentials (username and password) are invalid.
+    Parameters:
+        username (String): The username to check.
+        password (String): The password to check.
+    Returns:
+        true if credentials are invalid, false otherwise.
+
+• Method: login(String username, String password)
+    Description:
+        Logs in a user based on the provided username and password.
+    Parameters:
+        username (String): The username of the user to log in.
+        password (String): The password associated with the username.
+    Returns:
+        The logged-in User object.
+    Throws:
+        InvalidArgumentsException: If provided credentials are invalid.
+        InvalidUserException: If no user with the provided credentials is found.
+
+• Method: register(String username, String password, String repeatPassword, String name, String surname)
+    Description:
+        Registers a new user with the provided details.
+    Parameters:
+        username (String): The username for the new user.
+        password (String): The password for the new user.
+        repeatPassword (String): The repeated password for confirmation.
+        name (String): The name of the new user.
+        surname (String): The surname of the new user.
+    Returns:
+        The registered User object.
+    Throws:
+        InvalidArgumentsException: If provided credentials are invalid.
+        PasswordsDoNotMatchException: If the provided passwords do not match.
+
+• Method: findAll()
+    Description:
+        Retrieves a list of all users in the system.
+    Returns:
+        List of all users.
+
+• Method: getUserByUsername(String username)
+    Description:
+        Retrieves a user based on the provided username.
+    Parameters:
+        username (String): The username of the user to retrieve.
+    Returns:
+        The User object corresponding to the username.
+
+• Method: userExist(String username)
+    Description:
+        Checks if a user with the provided username exists in the system.
+    Parameters:
+        username (String): The username to check for existence.
+    Returns:
+        true if the user exists, false otherwise.
+
+
+***************************************************************************************
+
+
+For ReviewServiceImpl Class:
+
+• Method: getReviewsByWineryId(Long id)
+    Description:
+        Retrieves a list of reviews for a specific winery based on the winery ID.
+    Parameters:
+        id (Long): The ID of the winery for which reviews are to be retrieved.
+    Returns:
+        List of reviews for the specified winery.
+
+• Method: save(Long id, float score, String comment)
+    Description:
+        Saves a new review for a specified winery.
+    Parameters:
+        id (Long): The ID of the winery for which the review is being added.
+        score (float): The score assigned to the winery in the review.
+        comment (String): The comment provided in the review.
+    Returns:
+        The saved Review object.
+    Throws:
+        InvalidArgumentsException: If the specified winery ID is invalid.
+
+
+****************************************************************************************
+
+
+For WinariesServiceImpl:
+
+• Method: findById(Long id)
+    Description:
+        Retrieves a winery by its ID.
+    Parameters:
+        id (Long): The ID of the winery to retrieve.
+    Returns: The Wineries object corresponding to the ID.
+    Throws:
+        InvalidArgumentsException: If no winery with the provided ID is found.
+
+• Method:saveWineriesData(List<Wineries> wineries)
+    Description: Saves a list of wineries data.
+    Parameters:
+        wineries (List<Wineries>): List of Wineries objects to be saved.
+
+
+***********************************************************************************
+
+
+For HomeController Class:
+
+• Method: getHomePage(HttpServletRequest request, Model model)
+    Description:
+        Handles the GET request for the home page.
+    Parameters:
+        request (HttpServletRequest): The HttpServletRequest object.
+        model (Model): The Model object for passing data to the view.
+    Returns:
+        The name of the view template ("home" in this case).
+
+
+************************************************************************************
+
+
+For LoginController Class:
+
+• Method: getLoginPage(Model model)
+    Description:
+        Handles the GET request for the login page.
+    Parameters:
+        model (Model): The Model object for passing data to the view.
+    Returns:
+        The name of the view template ("login" in this case).
+
+• Method: login(HttpServletRequest request, Model model)
+    Description:
+        Handles the POST request for user login.
+    Parameters:
+        request (HttpServletRequest): The HttpServletRequest object.
+        model (Model): The Model object for passing data to the view.
+    Returns:
+        The name of the view template ("login" in case of login failure, redirects to "/home" on successful login).
+    Exceptions:
+        InvalidUserException: If user authentication fails.
+        InvalidArgumentsException: If invalid arguments are provided.
+    Side Effects:
+        Logs login errors using the WineryLogger
+
+
+***************************************************************************************************************
+
+
+For LogoutController Class:
+
+• Method: logout(HttpServletRequest request, Model model)
+    Description:
+        Handles the GET request for user logout.
+    Parameters:
+        request (HttpServletRequest): The HttpServletRequest object.
+        model (Model): The Model object.
+    Returns:
+        Redirects to the login page ("/login").
+    Side Effects:
+        Invalidates the user session.
+
+
+**********************************************************************************************
+
+
+For RegisterController Class:
+
+• Method:showRegistrationForm(Model model)
+    Description:
+        Handles the GET request to show the user registration form.
+    Parameters:
+        model (Model): The Model object for passing data to the view.
+    Returns:
+        The name of the view template ("register" in this case).
+
+• Method: register(HttpServletRequest request, Model model, String username)
+    Description:
+        Handles the POST request for user registration.
+    Parameters:
+        request (HttpServletRequest): The HttpServletRequest object.
+        model (Model): The Model object for passing data to the view.
+        username (String): The username obtained from the request.
+    Returns:
+        Redirects to the login page ("/login") on successful registration.
+    Side Effects:
+        Logs registration errors using the WineryLogger.
+    Throws:
+        InvalidArgumentsException: If invalid arguments are provided during registration.
+
+
+**********************************************************************************************
+
+
+For ReviewController Class:
+
+• Method: getWineryReviews(Long id, float score, String comment, Model model)
+    Description:
+        Handles the GET request to retrieve winery reviews.
+    Parameters:
+        id (Long): The ID of the winery for which reviews are to be retrieved.
+        score (float): The score for the new review.
+        comment (String): The comment for the new review.
+        model (Model): The Model object for passing data to the view.
+    Returns:
+        The name of the view template ("review" in this case).
+
+• Method: submitReview(Long id, float score, String comment)
+    Description:
+        Handles the POST request to submit a new review.
+    Parameters:
+        id (Long): The ID of the winery for which the review is being submitted.
+        score (float): The score for the new review.
+        comment (String): The comment for the new review.
+    Returns:
+        The name of the view template ("review" in this case).
+
+
+**********************************************************************************************
+
+
+For WineController Class:
+
+• Method: getWinePage(HttpServletRequest request, Model model)
+    Description:
+        Handles the GET request for the wine page.
+    Parameters:
+        request (HttpServletRequest): The HttpServletRequest object.
+        model (Model): The Model object for passing data to the view.
+    Returns:
+        The name of the view template ("wine" in this case).
+    Side Effects:
+        Passes the username to the template if the user is logged in.
+
+
+**********************************************************************************************
+
+
+For WineriesController Class:
+
+• Method: getWineries(HttpServletRequest request, Model model)
+    Description:
+        Handles the GET request for the wineries page.
+    Parameters:
+        request (HttpServletRequest): The HttpServletRequest object.
+        model (Model): The Model object for passing data to the view.
+    Returns:
+        The name of the view template ("wineries" in this case).
+    Side Effects:
+        Retrieves wineries from the "/wineries.json" file.
+        Passes the username to the template if the user is logged in.
+
+• Method: getFilteredWineries(String location, Model model)
+    Description:
+        Handles the GET request for filtered wineries based on location.
+    Parameters:
+        location (String): The location to filter wineries.
+        model (Model): The Model object for passing data to the view.
+    Returns:
+        The name of the view template ("wineries" in this case).
+    Side Effects:
+        Filters wineries based on the provided location.
+        Passes location options, selected location, wineries, and filtered wineries to the template.
+
+• Method: filterWineriesByLocation(String location)
+    Description:
+        Filters wineries based on the provided location.
+    Parameters:
+        location (String): The location to filter wineries.
+    Returns:
+        The filtered list of wineries
+
+
+**********************************************************************************************
