@@ -103,7 +103,7 @@
                         <p class="card-text">Description: <span th:text="${winery.description}">Description</span></p>
                                                 <img th:src="${winery.image}" alt="Winery Image">
                         <hr/>
-                        <form th:action="@{'/saveReview/{id}'}" th:method="POST">
+                        <form th:action="@{'/saveReview/{id}' (id=${winery.id})}" th:method="POST">
                             <input type="hidden" name="id" th:value="${winery.getId()}" />
                             <div class="form-group">
                                 <label for="score">Winery score: </label>
