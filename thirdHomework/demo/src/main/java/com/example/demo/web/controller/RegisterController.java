@@ -9,9 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@RequestMapping("/register")
 
 public class RegisterController {
     private final AuthService authService;
@@ -21,38 +21,52 @@ public class RegisterController {
         this.authService = authService;
     }
 
-    @GetMapping("/register")
-    public String showRegistrationForm() {
-        return "register"; //  registration page.
+    @GetMapping
+    public String showRegistrationForm(Model model) {
+        model.addAttribute("bodyContent", "register");
+        return "register";
     }
 
-    @PostMapping ("/register") // Specify the path for the POST method
-    public String register(HttpServletRequest request, Model model,String username) {
+    @PostMapping
+    public String register(HttpServletRequest request, Model model, String username) {
         User user = null;
         Boolean userExist=authService.userExist(username);
+        model.addAttribute("onRegister", "Hey");
         if (userExist) {
-            return "redirect:/register?error=Username already exists";
+            String errorMessage = "User already exists. Please choose another username";
+            model.addAttribute("errorMessage", errorMessage);
+            wineryLogger.logRegistrationError(username, errorMessage);
+            return "register";
         }
-        try {
-            user = authService.register(request.getParameter("username"),
-                request.getParameter("password"),
-                request.getParameter("repeatPassword"),
-                request.getParameter("name"),
-                request.getParameter("surname"));
-            System.out.println("Try in RegisterController. Session is: " + request.getSession());
+        String userUsername = request.getParameter("username");
+        String userPassword = request.getParameter("password");
+        String userRepeatedPassword = request.getParameter("repeatPassword");
+        String userName = request.getParameter("name");
+        String userSurname = request.getParameter("surname");
 
-        } catch (InvalidUserExcepion | InvalidArgumentsException exception) {
-            model.addAttribute("bodyContent", "login");
-            model.addAttribute("hasError", true);
-            model.addAttribute("error", exception.getMessage());
-            wineryLogger.logRegistrationError(request.getParameter("username"), exception.getMessage());
-            return "redirect:/register";
-        }catch (NonUniqueUsernameException e) {
-            // Username is not unique, add error message to the model
-            model.addAttribute("errorMessage", e.getMessage());
-            // Redirect back to the registration page
-            return "redirect:/register";
+        if(userUsername.length() < 5)
+        {
+            String errorMessage = "Username should be at least 5 characters.";
+            model.addAttribute("errorMessage", errorMessage);
+            wineryLogger.logRegistrationError(username, errorMessage);
+            return "register";
         }
+
+        if (!userPassword.equals(userRepeatedPassword)){
+            String errorMessage = "Passwords do not match. Please re-enter password.";
+            model.addAttribute("errorMessage", errorMessage);
+            wineryLogger.logRegistrationError(username, errorMessage);
+            return "register";
+        }
+
+        if(userPassword.length() < 8){
+            String errorMessage = "Password should be at least 8 characters.";
+            model.addAttribute("errorMessage", errorMessage);
+            wineryLogger.logRegistrationError(username, errorMessage);
+            return "register";
+        }
+
+        user = authService.register(userUsername, userPassword, userRepeatedPassword, userName, userSurname);
 
         request.getSession().setAttribute("user", user);
         return "redirect:/login";

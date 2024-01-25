@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
-@RequestMapping("/login")  // Add a common mapping for the entire controller
+@RequestMapping("/login")
 public class LoginController {
 
     private final AuthService authService;
@@ -22,13 +22,13 @@ public class LoginController {
         this.authService = authService;
     }
 
-    @GetMapping  // Specify the path for the GET method
+    @GetMapping
     public String getLoginPage(Model model) {
         model.addAttribute("bodyContent", "login");
         return "login";
     }
 
-    @PostMapping  // Specify the path for the POST method
+    @PostMapping
     public String login(HttpServletRequest request, Model model) {
         User user = null;
 
