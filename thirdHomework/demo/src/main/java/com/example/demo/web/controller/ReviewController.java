@@ -1,5 +1,6 @@
 package com.example.demo.web.controller;
 
+import com.example.demo.logger.WineryLogger;
 import com.example.demo.model.Review;
 import com.example.demo.model.Wineries;
 import com.example.demo.repository.ReviewRepositoryJPA;
@@ -25,6 +26,7 @@ public class ReviewController {
 
     private final ReviewService reviewService;
     private final WineriesService wineriesService;
+    private final WineryLogger wineryLogger = WineryLogger.getInstance();
 
     public ReviewController(ReviewService reviewService, WineriesService wineriesService) {
         this.reviewService = reviewService;
@@ -37,7 +39,6 @@ public class ReviewController {
                                    @RequestParam String comment,
                                    Model model){
         Wineries winery = wineriesService.findById(id);
-
         Review review=new Review();
         review.setScore(score);
         review.setComment(comment);
@@ -46,7 +47,6 @@ public class ReviewController {
         model.addAttribute("id", id);
         model.addAttribute("winery",winery);
         model.addAttribute("review",review);
-
         return "review";
     }
 
@@ -54,8 +54,7 @@ public class ReviewController {
     public String submitReview(@PathVariable Long id,
                                      @RequestParam float score,
                                      @RequestParam String comment) {
-
         reviewService.save(id,score,comment);
-        return ("redirect:/review");
+        return "review";
     }
 }

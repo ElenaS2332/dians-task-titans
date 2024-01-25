@@ -15,7 +15,7 @@
 <body>
 <div class="review-container">
 <h1 class="title" style="font-style: italic; color: maroon">Thanks for your review!</h1>
-<!--    <form th:method="POST" th:action="@{'/review/{id}' (id=${winery.id})}">-->
+    <form th:method="GET" th:action="@{'/review/{id}'}">
         <hr/>
         <form th:each="rev:${review}">
             <p class="score">Score: <span th:text="${rev.score}"></span></p>
@@ -25,7 +25,7 @@
         <button class="back">
             <a href="/wineries">Back</a>
         </button>
-<!--    </form>-->
+    </form>
 </div>
 
 </body>

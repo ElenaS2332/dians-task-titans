@@ -35,7 +35,8 @@ public class ReviewServiceImpl implements ReviewService {
     public Review save(Long id,float score, String comment) {
         Wineries winery=wineriesRepository.findById(id).orElseThrow(InvalidArgumentsException::new);
         Review review= new Review(score,comment,winery);
-        return reviewRepository.save(review);
+        Review savedReview=reviewRepository.save(review);
+        return savedReview;
     }
 
 }

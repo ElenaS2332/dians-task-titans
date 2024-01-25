@@ -69,7 +69,7 @@
                         <img th:src="${winery.image}" alt="Winery Image">
                         <hr/>
 
-                        <form th:action="@{'/review/{id}' (id=${winery.id})}" th:method="GET">
+                        <form th:action="@{'/saveReview/{id}' (id=${winery.id})}" th:method="POST">
                         <input type="hidden" name="id" th:value="${winery.getId()}">
                             <div class="form-group">
                                 <label for="score">Winery score: </label>
@@ -79,10 +79,7 @@
                                 <label for="comment">Comment:</label>
                                 <input type="text" class="form-control" id="comment" name="comment" placeholder="Enter review comment" required>
                             </div>
-                        <form th:method="POST" th:action="@{'/review/{id}' (id=${winery.id})}">
                             <button id="submit" style="background-color: lightgreen; margin: 5px; padding: 5px;width: 60px; height: 35px"  type="submit">Submit</button>
-                        </form>
-
                         </form>
                     </div>
                 </div>
