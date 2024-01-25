@@ -1,12 +1,16 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Review;
+import com.example.demo.model.Wineries;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+
 public interface ReviewService {
-    static void addReview(Review review) {}
+    //Review addReview(Integer score, String comment);
     List<Review> getReviewsByWineryId(Long ID);
+
+    Review save(Long id,float score, String comment);
+
 }

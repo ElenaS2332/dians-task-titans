@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.model.InvalidArgumentsException;
 import com.example.demo.model.Wineries;
 import com.example.demo.repository.WineriesRepository;
 import com.example.demo.service.WineriesService;
@@ -21,8 +22,8 @@ public class WineriesServiceImpl implements WineriesService {
     }
 
     @Override
-    public Optional<Wineries> findById(Long ID) {
-        return this.wineriesRepository.findById(ID);
+    public Wineries findById(Long ID) {
+        return wineriesRepository.findById(ID).orElseThrow(InvalidArgumentsException::new);
     }
 
     @Transactional

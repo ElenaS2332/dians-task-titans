@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface WineriesService {
     void saveWineriesData(List<Wineries> wineries);
-    public Optional<Wineries> findById(Long ID);
+    Wineries findById(Long ID);
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -65,19 +66,23 @@
                         <p class="card-text">Location: <span th:text="${winery.location}">Location</span></p>
                         <p class="card-text">Rating: <span th:text="${winery.rating}">Rating</span></p>
                         <p class="card-text">Description: <span th:text="${winery.description}">Description</span></p>
-<!--                        <img th:src="${winery.image}" alt="Winery Image">-->
+                        <img th:src="${winery.image}" alt="Winery Image">
                         <hr/>
-                        <form th:action="'/review'" method="GET">
-                            <input type="hidden" name="id" th:value="${winery.getId()}" />
+
+                        <form th:action="@{'/review/{id}' (id=${winery.id})}" th:method="GET">
+                        <input type="hidden" name="id" th:value="${winery.getId()}">
                             <div class="form-group">
                                 <label for="score">Winery score: </label>
-                                <input type="text" class="form-control" id="score" name="score" placeholder="Enter winery score">
+                                <input type="number" class="form-control" id="score" name="score"  placeholder="Enter winery score" required th:step="${0.01}" th:min="${0.00}" th:max="${5.00}">
                             </div>
                             <div class="form-group">
                                 <label for="comment">Comment:</label>
-                                <input type="text" class="form-control" id="comment" name="comment" placeholder="Enter review comment">
+                                <input type="text" class="form-control" id="comment" name="comment" placeholder="Enter review comment" required>
                             </div>
+                        <form th:method="POST" th:action="@{'/review/{id}' (id=${winery.id})}">
                             <button id="submit" style="background-color: lightgreen; margin: 5px; padding: 5px;width: 60px; height: 35px"  type="submit">Submit</button>
+                        </form>
+
                         </form>
                     </div>
                 </div>
@@ -97,19 +102,19 @@
                         <p class="card-text">Location: <span th:text="${winery.location}">Location</span></p>
                         <p class="card-text">Rating: <span th:text="${winery.rating}">Rating</span></p>
                         <p class="card-text">Description: <span th:text="${winery.description}">Description</span></p>
-                        <!--                        <img th:src="${winery.image}" alt="Winery Image">-->
+                                                <img th:src="${winery.image}" alt="Winery Image">
                         <hr/>
-                        <form th:action="'/review'" method="GET">
+                        <form th:action="@{'/saveReview/{id}'}" th:method="POST">
                             <input type="hidden" name="id" th:value="${winery.getId()}" />
                             <div class="form-group">
                                 <label for="score">Winery score: </label>
-                                <input type="text" class="form-control" id="filterScore" name="score" placeholder="Enter winery score">
+                                <input type="number" class="form-control" id="filterScore" name="score" placeholder="Enter winery score" required th:step="${0.01}" th:min="${0.00}" th:max="${5.00}"/>
                             </div>
                             <div class="form-group">
                                 <label for="comment">Comment:</label>
-                                <input type="text" class="form-control" id="filterComment" name="comment" placeholder="Enter review comment">
+                                <input type="text" class="form-control" id="filterComment" name="comment" placeholder="Enter review comment" required/>
                             </div>
-                            <button id="filterSubmit" style="background-color: lightgreen; margin: 5px; padding: 5px;width: 60px; height: 35px"  type="submit">Submit</button>
+                                <button id="filterSubmit" style="background-color: lightgreen; margin: 5px; padding: 5px;width: 60px; height: 35px"  type="submit">Submit</button>
                         </form>
                     </div>
                 </div>

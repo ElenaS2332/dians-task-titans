@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,12 +15,17 @@
 <body>
 <div class="review-container">
 <h1 class="title" style="font-style: italic; color: maroon">Thanks for your review!</h1>
-<hr/>
-<p class="score">Score: <span th:text="${score}"></span></p>
-<p class="comment">Comment: <span th:text="${comment}"></span></p>
-<button class="back">
-    <a href="/wineries">Back</a>
-</button>
+<!--    <form th:method="POST" th:action="@{'/review/{id}' (id=${winery.id})}">-->
+        <hr/>
+        <form th:each="rev:${review}">
+            <p class="score">Score: <span th:text="${rev.score}"></span></p>
+            <p class="comment">Comment: <span th:text="${rev.comment}"></span></p>
+        </form>
+
+        <button class="back">
+            <a href="/wineries">Back</a>
+        </button>
+<!--    </form>-->
 </div>
 
 </body>
