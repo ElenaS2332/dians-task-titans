@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.model.InvalidArgumentsException;
 import com.example.demo.model.Review;
 import com.example.demo.model.Wineries;
 import com.example.demo.repository.InMemoryWineriesRepository;
@@ -26,15 +27,16 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public List<Review> getReviewsByWineryId(Long ID) {
-        return reviewRepository.findByWineryId(ID);
+        List<Review> reviews=reviewRepository.findByWineryId(ID);
+        return reviews;
     }
 
-
-    @Transactional
-    public Review save(int score, String comment, Long ID) {
-        Optional<Wineries> winery = this.wineriesRepository.findById(ID);
-
-
-        return this.reviewRepository.save(new Review(score,comment,winery.get()));
+    @Override
+    public Review save(Long id,float score, String comment) {
+        Wineries winery=wineriesRepository.findById(id).orElseThrow(InvalidArgumentsException::new);
+        Review review= new Review(score,comment,winery);
+        Review savedReview=reviewRepository.save(review);
+        return savedReview;
     }
+
 }

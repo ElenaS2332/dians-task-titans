@@ -1,85 +1,84 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <title>Registration Page</title>
-  <style>
-        body {
-            background-color: #600000; /* Deep red wine color */
-            color: #ffffff; /* White text */
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Registration Page</title>
+    <style>
+      body {
+          background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20231229/pngtree-top-view-of-wine-bottle-image_13868279.png');
+          background-size: cover;
+          background-repeat: no-repeat;
+          color: #ffffff; /* White text */
+     }
 
-        .container {
-            max-width: 400px;
-            margin: auto;
-            margin-top: 5%;
-        }
+     .container {
+       max-width: 400px;
+       margin: auto;
+       margin-top: 5%;
+      }
 
-        .form-signup {
-            background-color: #800000; /* Darker red wine color */
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
+     .form-signup {
+       background-color: #6C2F42; /* Darker red wine color */
+       padding: 15px;
+       border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+     }
 
-        .form-signup-heading {
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #ffffff; /* White text */
-        }
+      .form-signup-heading {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 20px;
+       color: #ffffff; /* White text */
+      }
 
-        .form-control {
-            margin-bottom: 15px;
-            background-color: #ffffff; /* White input field */
-            color: #600000; /* Deep red wine color text */
-        }
+     .form-control {
+        margin-bottom: 15px;
+        background-color: #ffffff; /* White input field */
+        color: #600000; /* Deep red wine color text */
+      }
 
-        .btn-primary {
-            background-color: #8b0000; /* Dark red wine color for button */
-            border-color: #8b0000; /* Dark red wine color for button border */
-        }
+     .btn-primary {
+       background-color: #6C2F42; /* Dark red wine color for button */
+        border-color: #ffffff; /* Dark red wine color for button border */
+      }
 
-        .btn-light {
-            background-color: #ffffff; /* White color for the light button */
-            border-color: #ffffff; /* White color for the light button border */
-            color: #600000; /* Deep red wine color text */
-        }
+      .btn-light {
+        background-color: #ffffff; /* White color for the light button */
+        border-color: #ffffff; /* White color for the light button border */
+        color: #600000; /* Deep red wine color text */
+     }
     </style>
 </head>
 <body>
 <div class="container">
-  <form class="form-signup" method="post" action="/register">
-
-    <h2 class="form-signup-heading">Register</h2>
-    <div class="form-group">
-      <label for="username" class="sr-only">Username</label>
-      <input type="text" id="username" name="username" class="form-control" placeholder="Username" required=""
-             autofocus="">
-    </div>
-    <div class="form-group">
-      <label for="password" class="sr-only">Password</label>
-      <input type="password" id="password" name="password" class="form-control" placeholder="Password"
-             required="">
-    </div>
-    <div class="form-group">
-      <label for="repeatPassword" class="sr-only">Repeat password</label>
-      <input type="password" id="repeatPassword" name="repeatPassword" class="form-control" placeholder="repeatPassword" required="">
-    </div>
-    <div class="form-group">
-      <label for="name" class="sr-only">Name</label>
-      <input type="text" id="name" name="name" class="form-control" placeholder="name" required="">
-    </div>
-    <div class="form-group">
-      <label for="surname" class="sr-only">Surname</label>
-      <input type="text" id="surname" name="surname" class="form-control" placeholder="surname" required="">
-    </div>
-    <th:block th:if="${hasError}">
-      <div th:text="${error}" class="text-danger"></div>
-    </th:block>
-
+    <form class="form-signup" method="post" action="/register">
+      <h2 class="form-signup-heading">Register</h2>
+      <div class="form-group">
+          <label for="username" class="sr-only">Username</label>
+          <input type="text" id="username" name="username" class="form-control" placeholder="Username" required=""
+             autofocus="" >
+      </div>
+       <div class="form-group">
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
+       </div>
+        <div class="form-group">
+            <label for="repeatPassword" class="sr-only">Repeat password</label>
+            <input type="password" id="repeatPassword" name="repeatPassword" class="form-control" placeholder="repeatPassword" required="">
+        </div>
+        <div class="form-group">
+            <label for="name" class="sr-only">Name</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="name" required="">
+        </div>
+        <div class="form-group">
+            <label for="surname" class="sr-only">Surname</label>
+            <input type="text" id="surname" name="surname" class="form-control" placeholder="surname" required="">
+        </div>
+        <th:block th:if="${errorMessage}">
+            <div th:text="${errorMessage}" th:color="white"></div>
+        </th:block>
     <div class="row">
       <div class="col-md-12">
         <button id="submit" class="btn btn-lg btn-primary btn-block" type="submit">Register</button>

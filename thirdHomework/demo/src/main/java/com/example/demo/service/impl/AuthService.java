@@ -58,14 +58,23 @@ public class AuthService implements AuthServiceе {
 
     @Override
     public User getUserByUsername(String username) {
-        Optional<User> optionalUser = userRepository.findByUsername(username);
+        User user = userRepository.findByUsername(username);
 
-        if (optionalUser.isEmpty()) {
-            throw new InvalidUserExcepion(); // or handle as appropriate for your application
-        }
+//        if (optionalUser.isEmpty()) {
+//            throw new InvalidUserExcepion(); // or handle as appropriate for your application
+//        }
 
-        User user = optionalUser.get();
-        return new User(user.getId(), user.getUsername(), user.getPassword(), user.getName(), user.getSurname());
+//        User user = optionalUser.get();
+        return user;
+    }
+
+    @Override
+    public Boolean userExist(String username) {
+        User user = userRepository.findByUsername(username);
+        if (user == null)
+            return false;
+        else {}
+        return true;
     }
 
 }

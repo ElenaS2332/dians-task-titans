@@ -1,6 +1,10 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +12,6 @@ import lombok.NoArgsConstructor;
 import java.util.Optional;
 
 @Data
-@AllArgsConstructor
 @Entity
 @Table(name="reviews")
 public class Review {
@@ -16,20 +19,28 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int score;
+    private float score;
+
     private String comment;
 
     @ManyToOne
     @JoinColumn(name = "winery_id")
     private Wineries winery;
 
-    public Review(Long id, String comment,int score) {
+    public Review(Long id, float score,String comment) {
         this.id = id;
         this.comment = comment;
         this.score = score;
     }
 
-    public Review(int score, String comment, Wineries winery) {
+    public Review(float score, String comment) {
+        this.score = score;
+        this.comment = comment;
+
+    }
+
+    public Review(float score, String comment, Wineries winery) {
+
         this.score = score;
         this.comment = comment;
         this.winery = winery;
@@ -39,7 +50,7 @@ public class Review {
         this.id = id;
     }
 
-    public void setScore(int score) {
+    public void setScore(float score) {
         this.score = score;
     }
 
@@ -47,7 +58,7 @@ public class Review {
         this.comment = comment;
     }
 
-    public int getScore() {
+    public float getScore() {
         return score;
     }
 

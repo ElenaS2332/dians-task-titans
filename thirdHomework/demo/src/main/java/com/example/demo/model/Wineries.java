@@ -9,7 +9,6 @@ import java.util.List;
 @Table(name = "wineries")
 public class Wineries {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty("id")
     public long id;
 
@@ -21,10 +20,9 @@ public class Wineries {
     public String location;
     public String rating;
     public String description;
-
     public String phone;
 
-    @OneToMany(mappedBy = "winery", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "winery")
     private List<Review> reviews;
     @JsonProperty("img")
     public String image;

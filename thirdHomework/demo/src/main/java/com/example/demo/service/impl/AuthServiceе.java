@@ -8,4 +8,5 @@ public interface AuthServiceе {
     User register(String username, String password, String repeatPassword, String name, String surname);
     List<User> findAll();
     User getUserByUsername(String username);
+    Boolean userExist(String username);
 }
