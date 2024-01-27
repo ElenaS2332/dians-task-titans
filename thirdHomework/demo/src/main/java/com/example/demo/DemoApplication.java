@@ -3,7 +3,9 @@ package com.example.demo;
 import com.example.demo.model.JsonReader;
 import com.example.demo.model.Wineries;
 import com.example.demo.service.WineriesService;
+import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.AbstractDiscoveryClientOptionalArgs;
+import com.netflix.discovery.EurekaClientConfig;
 import com.netflix.discovery.shared.resolver.EurekaEndpoint;
 import com.netflix.discovery.shared.transport.EurekaHttpClient;
 import com.netflix.discovery.shared.transport.TransportClientFactory;
@@ -19,7 +21,9 @@ import org.springframework.context.annotation.Configuration;
 
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 @ServletComponentScan
 @SpringBootApplication
@@ -36,6 +40,21 @@ public class DemoApplication {
         @Bean
         public AbstractDiscoveryClientOptionalArgs<?> discoveryClientOptionalArgs() {
             return new AbstractDiscoveryClientOptionalArgs() {};
+        }
+
+        @Bean
+        public TransportClientFactories transportClientFactories() {
+            return new TransportClientFactories() {
+                @Override
+                public TransportClientFactory newTransportClientFactory(com.netflix.discovery.EurekaClientConfig clientConfig, Collection additionalFilters, InstanceInfo myInstanceInfo) {
+                    return null;
+                }
+
+                @Override
+                public TransportClientFactory newTransportClientFactory(com.netflix.discovery.EurekaClientConfig clientConfig, Collection additionalFilters, InstanceInfo myInstanceInfo, Optional optional, Optional optional2) {
+                    return null;
+                }
+            };
         }
 
     }
