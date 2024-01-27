@@ -14,7 +14,7 @@ import java.util.List;
 
 @ServletComponentScan
 @SpringBootApplication
-
+@EnableEurekaClient
 public class DemoApplication {
 
     public static void main(String[] args) {
