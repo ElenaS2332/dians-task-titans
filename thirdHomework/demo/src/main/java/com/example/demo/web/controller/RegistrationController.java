@@ -1,15 +1,9 @@
 package com.example.demo.web.controller;
 
-import com.example.demo.logger.WineryLogger;
-import com.example.demo.model.*;
-import com.example.demo.service.impl.AuthService;
-import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import com.example.demo.service.impl.AuthService;
 
 //@Controller
 //@RequestMapping("/register")
@@ -79,21 +73,21 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/register")
 public class RegistrationController {
 
-    private final RegistrationService registrationService;
-
-    public RegistrationController(RegistrationService registrationService) {
-        this.registrationService = registrationService;
-    }
-
-    @PostMapping("/user")
-    public ResponseEntity<String> registerUser(@RequestBody RegistrationRequest request) {
-        boolean registrationResult = registrationService.registerUser(request);
-        if (registrationResult) {
-            return ResponseEntity.ok("User registered successfully");
-        } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to register user.");
-        }
-    }
+//    private final AuthService registrationService;
+//
+//    public RegistrationController(RegistrationService registrationService) {
+//        this.registrationService = registrationService;
+//    }
+//
+//    @PostMapping("/user")
+//    public ResponseEntity<String> registerUser(@RequestBody RegistrationRequest request) {
+//        boolean registrationResult = registrationService.registerUser(request);
+//        if (registrationResult) {
+//            return ResponseEntity.ok("User registered successfully");
+//        } else {
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to register user.");
+//        }
+//    }
 }
 
 

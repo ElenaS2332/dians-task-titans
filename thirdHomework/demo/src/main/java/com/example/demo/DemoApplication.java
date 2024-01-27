@@ -7,14 +7,18 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+
 
 import java.io.IOException;
 import java.util.List;
 
 @ServletComponentScan
 @SpringBootApplication
-@EnableEurekaClient
+@EnableEurekaServer
+@ComponentScan(basePackages = "com.example")
 public class DemoApplication {
 
     public static void main(String[] args) {
