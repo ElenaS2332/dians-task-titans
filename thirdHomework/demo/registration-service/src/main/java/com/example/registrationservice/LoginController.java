@@ -1,10 +1,5 @@
 package com.example.registrationservice;
 
-import com.example.demo.logger.WineryLogger;
-import com.example.demo.model.InvalidArgumentsException;
-import com.example.demo.model.InvalidUserExcepion;
-import com.example.demo.model.User;
-import com.example.demo.service.impl.AuthService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

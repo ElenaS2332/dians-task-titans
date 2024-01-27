@@ -1,16 +1,31 @@
 package com.example.registrationservice;
 
-import org.hibernate.service.Service;-service-api.AuthService;
 
-@Service
-public class RegistrationService{
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/register")
+
+public class RegisterController {
     private final AuthService authService;
     private final WineryLogger wineryLogger = WineryLogger.getInstance();
 
-    public RegistrationService(AuthService authService) {
+    public RegisterController(AuthService authService) {
         this.authService = authService;
     }
 
+    @GetMapping
+    public String showRegistrationForm(Model model) {
+        model.addAttribute("bodyContent", "register");
+        return "register";
+    }
+
+    @PostMapping
     public String register(HttpServletRequest request, Model model, String username) {
         User user = null;
         Boolean userExist=authService.userExist(username);
@@ -51,10 +66,9 @@ public class RegistrationService{
 
         user = authService.register(userUsername, userPassword, userRepeatedPassword, userName, userSurname);
 
+        request.getSession().setAttribute("user", user);
         return "redirect:/login";
     }
 }
-
-
 
 

@@ -1,5 +1,6 @@
 package com.example.registrationservice;
 
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
