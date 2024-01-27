@@ -1,4 +1,6 @@
-package com.example.wineriesservices;
+package com.example.wineriesserviceapi.service;
+
+import com.example.wineriesserviceapi.model.Wineries;
 
 import java.util.List;
 

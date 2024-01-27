@@ -1,4 +1,4 @@
-package com.example.wineriesservices;
+package com.example.wineriesserviceapi.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;

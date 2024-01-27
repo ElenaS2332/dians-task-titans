@@ -1,6 +1,8 @@
-package com.example.wineriesservices;
+package com.example.wineriesserviceapi.controller;
 
-import com.example.demo.model.User;
+import com.example.wineriesserviceapi.model.User;
+import com.example.wineriesserviceapi.model.Wineries;
+import com.example.wineriesserviceapi.service.WineriesService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;

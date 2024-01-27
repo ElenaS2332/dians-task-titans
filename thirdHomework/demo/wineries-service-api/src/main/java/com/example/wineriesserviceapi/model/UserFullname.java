@@ -1,4 +1,4 @@
-package com.example.wineriesservices;
+package com.example.wineriesserviceapi.model;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.example.wineriesservices;
+package com.example.wineriesserviceapi.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
