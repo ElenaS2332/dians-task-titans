@@ -68,7 +68,6 @@ public class WineriesController {
 
     @GetMapping("/filter")
     public String getFilteredWineries(@RequestParam(required = false) String location, Model model) {
-        // Perform filtering based on latitude and longitude
         List<Wineries> filteredWineries = filterWineriesByLocation(location);
 
         List<String> locationOptions = wineries.stream()
