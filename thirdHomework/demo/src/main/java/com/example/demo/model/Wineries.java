@@ -22,7 +22,7 @@ public class Wineries {
     public String rating;
     public String description;
 
-    @OneToMany(mappedBy = "winery", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "winery")
     private List<Review> reviews;
     @JsonProperty("img")
     public String image;
