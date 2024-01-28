@@ -1,5 +1,6 @@
-Deployment based on branch: dep-final  
-https://wineries.onrender.com  
+Deployment based on branch: dockerize
+
+https://wineries-app.azurewebsites.net
 Video of our project:  
 https://drive.google.com/file/d/169lFKSBHgxUxkCbVjZNEpIe0CxgDn9ts/view  
 Video of homework 4:  
