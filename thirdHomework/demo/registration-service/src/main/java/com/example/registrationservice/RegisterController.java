@@ -2,73 +2,51 @@ package com.example.registrationservice;
 
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
-@Controller
-@RequestMapping("/register")
-
+@RestController
+//@RequestMapping("/register")
 public class RegisterController {
     private final AuthService authService;
-    private final WineryLogger wineryLogger = WineryLogger.getInstance();
+    protected UserRepository userRepository;
 
-    public RegisterController(AuthService authService) {
+    public RegisterController(AuthService authService, UserRepository userRepository) {
         this.authService = authService;
+        this.userRepository = userRepository;
     }
 
-    @GetMapping
-    public String showRegistrationForm(Model model) {
-        model.addAttribute("bodyContent", "register");
-        return "register";
+    @RequestMapping("/users/{username}")
+    public User byUsername(@PathVariable("username") String username) {
+
+        User account = userRepository.findByUsername(username);
+
+        if (account == null)
+            throw new InvalidUserExcepion();
+        else {
+            return account;
+        }
     }
 
-    @PostMapping
-    public String register(HttpServletRequest request, Model model, String username) {
-        User user = null;
-        Boolean userExist=authService.userExist(username);
-        model.addAttribute("onRegister", "Hey");
-        if (userExist) {
-            String errorMessage = "User already exists. Please choose another username";
-            model.addAttribute("errorMessage", errorMessage);
-            wineryLogger.logRegistrationError(username, errorMessage);
-            return "register";
+    @RequestMapping(value = "/users/register", method = RequestMethod.POST)
+    public ResponseEntity<String> byUsername(@RequestBody UserRegistrationRequest request) {
+        try {
+            User user = authService.register(request.getUsername(), request.getPassword(),
+                    request.getRepeatPassword(), request.getName(), request.getSurname());
+            return ResponseEntity.ok("User registered successfully!");
+        } catch (InvalidArgumentsException | PasswordsDoNotMatchException ex) {
+            return ResponseEntity.badRequest().body(ex.getMessage());
         }
-        String userUsername = request.getParameter("username");
-        String userPassword = request.getParameter("password");
-        String userRepeatedPassword = request.getParameter("repeatPassword");
-        String userName = request.getParameter("name");
-        String userSurname = request.getParameter("surname");
-
-        if(userUsername.length() < 5)
-        {
-            String errorMessage = "Username should be at least 5 characters.";
-            model.addAttribute("errorMessage", errorMessage);
-            wineryLogger.logRegistrationError(username, errorMessage);
-            return "register";
-        }
-
-        if (!userPassword.equals(userRepeatedPassword)){
-            String errorMessage = "Passwords do not match. Please re-enter password.";
-            model.addAttribute("errorMessage", errorMessage);
-            wineryLogger.logRegistrationError(username, errorMessage);
-            return "register";
-        }
-
-        if(userPassword.length() < 8){
-            String errorMessage = "Password should be at least 8 characters.";
-            model.addAttribute("errorMessage", errorMessage);
-            wineryLogger.logRegistrationError(username, errorMessage);
-            return "register";
-        }
-
-        user = authService.register(userUsername, userPassword, userRepeatedPassword, userName, userSurname);
-
-        request.getSession().setAttribute("user", user);
-        return "redirect:/login";
     }
+
+
+
+
+
+
+
 }
-
-

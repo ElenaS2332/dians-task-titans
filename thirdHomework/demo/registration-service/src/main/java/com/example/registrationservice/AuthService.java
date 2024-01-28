@@ -32,7 +32,6 @@ public class AuthService implements AuthServiceе {
         if (credentialsInvalid(username, password)) {
             throw new InvalidArgumentsException();
         }
-
         if (!password.equals(repeatPassword)) {
             throw new PasswordsDoNotMatchException();
         }
