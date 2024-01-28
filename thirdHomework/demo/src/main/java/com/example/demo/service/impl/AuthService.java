@@ -60,11 +60,6 @@ public class AuthService implements AuthServiceе {
     public User getUserByUsername(String username) {
         User user = userRepository.findByUsername(username);
 
-//        if (optionalUser.isEmpty()) {
-//            throw new InvalidUserExcepion(); // or handle as appropriate for your application
-//        }
-
-//        User user = optionalUser.get();
         return user;
     }
 

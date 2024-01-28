@@ -29,12 +29,10 @@ public class HomeController {
     @GetMapping
     //za Hello Name
     public String getHomePage(HttpServletRequest request, Model model) {
-        // Retrieve the user from the session
         User user = (User) request.getSession().getAttribute("user");
 
         // Check if the user is logged in
         if (user != null) {
-            // Pass the username to the template
             model.addAttribute("username", user.getUsername());
         }
 

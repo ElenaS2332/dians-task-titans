@@ -22,12 +22,6 @@ public class User {
     @Convert(converter = UserFullnameConverter.class)
     private UserFullname fullname;
 
-//    @Embedded
-//    @AttributeOverrides({
-//            @AttributeOverride(name = "address1", column = @Column(name = "user_address1")),
-//            @AttributeOverride(name = "address2", column = @Column(name = "user_address2"))
-//    })
-//    private UserAddress userAddress;
     public User() {}
 
     public User(Long id, String username, String password, String name, String surname) {

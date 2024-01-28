@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Embeddable
 public class UserAddress {
-    //private String country;
-    //private String city;
+
     private String address1;
     private String address2;
 }

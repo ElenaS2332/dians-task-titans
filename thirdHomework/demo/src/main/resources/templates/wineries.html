@@ -22,7 +22,6 @@
                 class="logo"
         />
     </div>
-<!--     list items    -->
     <ul>
         <li><a href="/home"><button class="kopce1" type="submit">HOME</button></a></li>
         <li><a href="/wine"><button class="kopce2" type="submit">WINE</button></a></li>
@@ -54,7 +53,8 @@
             </div>
         </form>
     </div>
-<!--    Display all wineries-->
+
+
     <div class="container" th:if="${!isFilterApplied}">
         <div class="row">
             <div th:each="winery : ${wineries}" class="col-md-4 mb-4">
